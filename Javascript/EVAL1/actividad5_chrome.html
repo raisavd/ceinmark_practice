@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        <script>
+            let numeros=6;
+            let valido=true;
+            let pares=[];
+            let impares=[];
+
+            while(numeros!=0){//se matiene el bucle mientras no introduzca los 6 numeros correctamente
+                let ventana=prompt("Introduce "+numeros+" numeros (entre el 1 y el 20):");
+                valido=true;
+                if(ventana.length==0){//no esta vacio
+                    alert("Introduce un dato");
+                    valido=false;
+                }else if(isNaN(ventana)){//es numero
+                    alert("Introduce un numero");
+                    valido=false;
+                }else if(ventana<1 ||ventana>20){//rango correcto de numeros
+                    alert("Introduce un numero valido"); 
+                    valido=false;              
+                }   
+                if(valido){//numero valido, se añade a la array y se combia contador
+                    numeros--;
+                    parseInt(ventana);//Parsear para asegurarse de que sea numero
+                    if(ventana%2==0){//Condicion para ver si es par
+                        pares.push(ventana);//Meter los pares en el array
+                    }else{
+                        impares.push(ventana);//Meter los impares en el array
+                    }
+                }        
+            }
+            if(pares.length!=0){//ordeno la array de pares de menor a mayor
+                let aux;
+                for(i=0;i<pares.length;i++){
+                    for(j=i+1;j<pares.length;j++){
+                        if(pares[j]<pares[i]){
+                            aux=pares[i];
+                            pares[i]=pares[j];
+                            pares[j]=aux;
+                        }
+                    }
+
+                }
+                document.write("Empieza la array de pares: ");
+                for(i=0;i<pares.length;i++){
+                    document.write(pares[i]+" ");//Mostrar los numeros con una separacion
+                }
+                document.write("</br>");//Para que salgan en distintas lineas los impares y pares
+            }
+            if(impares.length!=0){//ordeno la array de impares de menor a mayor
+                let auxi;
+                for(i=0;i<impares.length;i++){
+                    for(j=i+1;j<impares.length;j++){
+                        if(impares[j]<impares[i]){                          
+                            auxi=impares[i];
+                            impares[i]=impares[j];
+                            impares[j]=auxi;
+                        }
+                    }
+                }
+                document.write("Empieza la array de impares: ");
+                for(i=0;i<impares.length;i++){
+                    document.write(impares[i]+" ");//Mostrar los numeros con una separacion entre comas
+                }
+            }
+        </script>
+    </body>
+</html>

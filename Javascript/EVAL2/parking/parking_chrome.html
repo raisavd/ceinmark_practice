@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<head>
+<style>
+    #capaMenu,#capaAltas,#capaBajas,#capaEntradas,#capaSalidas,#alta2,#alta3,#alta4,#confirmar,#buscar{
+            display:none;
+         }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+rel="stylesheet"
+/>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hove6r-min.css" rel="stylesheet" />
+
+<style>
+        /* ==========================================================================
+   #FONT
+   ========================================================================== */
+.font-robo {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+}
+
+/* ==========================================================================
+   #GRID
+   ========================================================================== */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 60px) / 2);
+  width: -moz-calc((100% - 60px) / 2);
+  width: calc((100% - 60px) / 2);
+}
+
+@media (max-width: 767px) {
+  .col-2 {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   #BOX-SIZING
+   ========================================================================== */
+/**
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+/**
+ * A very simple reset that sits on top of Normalize.css.
+ */
+body,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
+figure,
+hr,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Remove trailing margins from nested lists.
+ */
+li > ol,
+li > ul {
+  margin-bottom: 0;
+}
+
+/**
+ * Remove default table spacing.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
+ *    on fieldsets.
+ */
+fieldset {
+  min-width: 0;
+  /* [1] */
+  border: 0;
+}
+
+button {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+/* ==========================================================================
+   #PAGE WRAPPER
+   ========================================================================== */
+.page-wrapper {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   #BACKGROUND
+   ========================================================================== */
+.bg-blue {
+  background: #2c6ed5;
+}
+
+.bg-red {
+  background: #fa4251;
+}
+
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+.p-t-100 {
+  padding-top: 100px;
+}
+
+.p-t-180 {
+  padding-top: 180px;
+}
+
+.p-t-20 {
+  padding-top: 20px;
+}
+
+.p-t-30 {
+  padding-top: 30px;
+}
+
+.p-b-100 {
+  padding-bottom: 100px;
+}
+
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper--w960 {
+  max-width: 960px;
+}
+
+.wrapper--w680 {
+  max-width: 680px;
+}
+
+/* ==========================================================================
+   #BUTTON
+   ========================================================================== */
+.btn {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 25px;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn--radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.btn--green {
+  background: #4CA2CD;
+}
+
+.btn--green:hover {
+  background: #82E0AA;
+}
+
+/* ==========================================================================
+   #DATE PICKER
+   ========================================================================== */
+td.active {
+  background-color: #2c6ed5;
+}
+
+input[type="date" i] {
+  padding: 14px;
+}
+
+.table-condensed td, .table-condensed th {
+  font-size: 14px;
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+
+.daterangepicker td {
+  width: 40px;
+  height: 30px;
+}
+
+.daterangepicker {
+  border: none;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  display: none;
+  border: 1px solid #e0e0e0;
+  margin-top: 5px;
+}
+
+.daterangepicker::after, .daterangepicker::before {
+  display: none;
+}
+
+.daterangepicker thead tr th {
+  padding: 10px 0;
+}
+
+.daterangepicker .table-condensed th select {
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 5px;
+  outline: none;
+}
+
+/* ==========================================================================
+   #FORM
+   ========================================================================== */
+input {
+  outline: none;
+  margin: 0;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* input group 1 */
+/* end input group 1 */
+.input-group {
+  position: relative;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.input-icon {
+  position: absolute;
+  font-size: 18px;
+  color: #ccc;
+  right: 8px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.input--style-2 {
+  padding: 9px 0;
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input--style-2::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #808080;
+}
+
+.input--style-2:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #808080;
+  opacity: 1;
+}
+
+.input--style-2::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #808080;
+  opacity: 1;
+}
+
+.input--style-2:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #808080;
+}
+
+.input--style-2:-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #808080;
+}
+
+/* ==========================================================================
+   #SELECT2
+   ========================================================================== */
+.select--no-search .select2-search {
+  display: none !important;
+}
+
+.rs-select2 .select2-container {
+  width: 100% !important;
+  outline: none;
+}
+
+.rs-select2 .select2-container .select2-selection--single {
+  outline: none;
+  border: none;
+  height: 36px;
+}
+
+.rs-select2 .select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 36px;
+  padding-left: 0;
+  color: #808080;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
+  height: 34px;
+  right: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow b {
+  display: none;
+}
+
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow:after {
+  font-family: "Material-Design-Iconic-Font";
+  content: '\f2f9';
+  font-size: 18px;
+  color: #ccc;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.rs-select2 .select2-container.select2-container--open .select2-selection--single .select2-selection__arrow::after {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.select2-container--open .select2-dropdown--below {
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   #TITLE
+   ========================================================================== */
+
+.title {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 37px;
+}
+
+/* ==========================================================================
+   #CARD
+   ========================================================================== */
+.card {
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.card-2 {
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 100%;
+  display: table;
+}
+
+.card-2 .card-heading {
+  background: url("../images/bg-heading-02.jpg") top left/cover no-repeat;
+  width: 29.1%;
+  display: table-cell;
+}
+
+.card-2 .card-body {
+  display: table-cell;
+  padding: 80px 90px;
+  padding-bottom: 88px;
+}
+
+@media (max-width: 767px) {
+  .card-2 {
+    display: block;
+  }
+  .card-2 .card-heading {
+    width: 100%;
+    display: block;
+    padding-top: 300px;
+    background-position: left center;
+  }
+  .card-2 .card-body {
+    display: block;
+    padding: 60px 50px;
+  }
+}
+/*PARTE 2*/
+.navbar {
+        height: 80px;
+        padding: 0px;
+        margin-bottom: 5px;
+        background-color: #181818;
+        border-radius: 2px;
+    }
+    .navbar img{
+        width: 20px;
+        height: auto;
+        margin: auto;
+    }
+    .navbar button {
+
+    }
+    .logout {
+        color: white;
+        background-color: #181818;
+
+        border: none;
+    }
+    .big {
+        width: auto;
+        font-size: 25px;
+    }
+    .logout:hover{
+        color: blue;
+    }
+    .hola {
+        font-size: 25px
+    }
+    .imgc {
+        width: 500px;
+        height: 400px;
+    }
+    .container {
+        max-width: 100%; 
+        height:100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    .pad {
+        padding: 50px;
+    }
+    .botones {
+        width: 200px;
+        height: 50px;
+        border: #181818;
+        background-color: #181818;
+        border-radius: 12px;
+        font-family: Roboto,Helvetica Neue,Arial;
+        color: white;
+        line-height: 1.5;
+    }
+    .botones:hover{
+        color: yellow;
+        background-color: red;
+    }
+    .glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+.st {
+
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  background-image: url("./coche.jpg");
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.4); 
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+.background-image{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+    </style>
+</head>
+<body style="background-image:url(./coche.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;" id="back">
+  <!--######################### CAPA DE LOGUEO ##############################-->
+    <div id="capaLogueo">
+        <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+            <div class="wrapper wrapper--w960">
+                <div class="card card-2">
+                    <div class="card-heading"><img src="./p.jpg"></div>
+                    <div class="card-body">
+                        <h2 class="title">INICIE SESION PARA EMPEZAR</h2>
+                        <form id="logueo">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Introduce el nif" id="nif">
+                            </div>
+                            <div class="input-group">
+                                <input class="input--style-2" type="password" placeholder="Introduce la contrasena" id="contra">
+                            </div>
+                            <div class="p-t-30">
+                                <input type="button" class="btn btn--radius btn--green" id="ingresar" value="INGRESAR" onclick="ingresarr();">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--######################### CAPA DE MENU ##############################-->
+    <div id="capaMenu">
+        <nav class="navbar">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3"><a style="color: white; font-size: 16px;font-family: Roboto,Helvetica Neue,Arial; line-height: 1.5; text-transform:uppercase;"><img src="r.png" style="width: 35px;height:40px;margin-bottom:20px"><span class="hola">aisa</span><span> Parking Ceinmark</span></a></div>
+            <div class="col-3"></div>
+            <div class="col-4"></div>
+            <div class="col-1 butt ">
+                <button class="logout">
+                <i class="fa fa-sign-out big"onclick="verLogin()"></i>
+            </button>
+            </div>
+        </nav>
+        <div class="container st">
+            <div class="row">
+                    <div class="bg-text">
+                    <div class="row">
+                    <div class="col-6 pad"><a ><button class="botones glow-on-hover" id="entradas" value="ENTRADAS" onclick="verEntradas();">ENTRADAS</button></a></div>
+                    <div class="col-6 pad"><a><button class="botones glow-on-hover" id="salidas" value="SALIDAS" onclick="verSalidas();">SALIDAS</button></a></div></div>
+                    <div class="row"> <div class="col-6 pad"><a><button class="botones glow-on-hover" id="altas" value="ALTAS" onclick="verAltas();">ALTAS</button></a></div>
+                    <div class="col-6 pad"><a><button class="botones glow-on-hover" id="bajas" value="BAJAS" onclick="verBajas();">BAJAS</button></a></div></div>
+                    </div>
+                </div>
+                <div class="card hvr-pulse-shrink" style="margin-left:35% ;margin-top:3%;border-radius: 20px">
+                  <div class="card-body" style="background-color: #181818; color: white; border-radius: 20px;">
+                    <div class="col-12" id="contador" style="text-align: center; font-size: 60px;">
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--######################### CAPA DE ALTAS ##############################-->
+    <div id="capaAltas">
+            <nav class="navbar">
+                <div class="col-lg-1"></div>
+                    <div class="col-lg-3"><a style="color: white; font-size: 16px;font-family: Roboto,Helvetica Neue,Arial; line-height: 1.5; text-transform:uppercase;"><img src="r.png" style="width: 35px;height:40px;margin-bottom:20px"><span class="hola">aisa</span><span> Parking Ceinmark</span></a></div>
+                    <div class="col-3"></div>
+                    <div class="col-4"></div>
+                    <div class="col-1 butt ">
+                        <button class="logout"><i class="fa fa-sign-out big"  onclick="verLogin()"></i></button>
+                    </div>
+            </nav>
+            <div class="page-wrapper bg-white p-t-180 p-b-100 font-robo">
+                <div class="wrapper wrapper--w960">
+                    <div class="card card-2">
+                        <div class="card-body" style="background-color:#D6EAF8">
+                        <div id="alta1">
+                            <h2 class="title">REALICE UN ALTA</h2>
+                            <div class="input-group">
+                                <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el nif" id="nifPropietario">
+                            </div>
+                            <div class="p-t-30">
+                                <button class="btn btn--radius btn--green" id="consultarAlta" value="BUSCAR NIF" onclick="buscarNif();">BUSCAR NIF</button>
+                                <br>
+                                <br>
+                                <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                            </div>
+                        </div>
+                    <br>            
+                    <div id="alta2">
+                        <h2 class="title">DA DE ALTA UN PROPIETARIO</h2>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el nombre del propietario" id="nombreAlta">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el primer apellido del propietario" id="ape1Alta">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el segundo apellido del propietario" id="ape2Alta">
+                        </div>  
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el telefono del propietario" id="tlfAlta">
+                        </div>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el mail del propietario" id="mailAlta">
+                        </div>
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" id="botonPropietario" value="DAR DE ALTA AL PROPIETARIO" onclick="altaPropietario();">DAR DE ALTA AL PROPIETARIO</button>
+                            <br>
+                            <br>
+                            <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                        </div>
+                        </div>
+                        <br>
+                    <div id="alta3">
+                        <h2 class="title">DA DE ALTA UN VEHICULO</h2>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce la matricula" id="matricula">
+                        </div>
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" id="consultarMatricula" value="BUSCAR MATRICULA" onclick="buscarMatricula();">BUSCAR MATRICULA</button>
+                            <br>
+                            <br>
+                            <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                        </div>
+                    </div>   
+                    <div id="alta4">
+                        <h2 class="title">DA DE ALTA UN VEHICULO</h2>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce la marca" id="marcaAlta">
+                        </div>
+                        <div class="input-group">
+                            <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce el modelo" id="modeloAlta">
+                        </div>
+                        <div class="form-group">
+                            <label for="n1">Introduce el color:</label>
+                            <br>
+                            <div class="input-group">
+                                <input type="color" class="form-control" id="colorAlta"/>
+                            </div>
+                        </div>
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" id="altaVehiculo" onclick="altaVehiculo();">DAR DE ALTA</button>
+                            <br>
+                            <br>
+                            <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                       </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!--######################### CAPA DE BAJAS ##############################-->
+    <div id="capaBajas">
+      <nav class="navbar">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3"><a style="color: white; font-size: 16px;font-family: Roboto,Helvetica Neue,Arial; line-height: 1.5; text-transform:uppercase;"><img src="r.png" style="width: 35px;height:40px;margin-bottom:20px"><span class="hola">aisa</span><span> Parking Ceinmark</span></a></div>
+        <div class="col-3"></div>
+        <div class="col-4"></div>
+        <div class="col-1 butt ">
+            <button class="logout">
+            <i class="fa fa-sign-out big"  onclick="verLogin()"></i>
+        </button>
+        </div>
+      </nav>
+      <div class="page-wrapper bg-white p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-body" style="background-color:#D6EAF8">
+                <div id="alta1">
+                    <h2 class="title">REALICE UNA BAJA</h2>
+                    <div class="input-group">
+                        <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce la matricula" id="matriculaBaja">
+                    </div>
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" id="consultarAlta"  onclick="baja();">DAR DE BAJA</button>
+                        <br>
+                        <br>
+                        <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                    </div>
+                </div>
+              <br>
+            </div>           
+        </div>
+    </div>
+    </div>
+    </div>
+    <!--######################### CAPA DE ENTRADAS ##############################-->
+    <div id="capaEntradas">
+      <nav class="navbar">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3"><a style="color: white; font-size: 16px;font-family: Roboto,Helvetica Neue,Arial; line-height: 1.5; text-transform:uppercase;"><img src="r.png" style="width: 35px;height:40px;margin-bottom:20px"><span class="hola">aisa</span><span> Parking Ceinmark</span></a></div>
+        <div class="col-3"></div>
+        <div class="col-4"></div>
+        <div class="col-1 butt ">
+            <button class="logout">
+            <i class="fa fa-sign-out big"  onclick="verLogin()"></i>
+        </button>
+        </div>
+      </nav>
+      <div class="page-wrapper bg-white p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-body" style="background-color:#D6EAF8">
+                <div id="alta1">
+                    <h2 class="title">REALICE UNA ENTRADA</h2>
+                    <div class="input-group">
+                        <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce la matricula" id="matriculaEntradas">
+                    </div>
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" id="entradaVehiculo"  onclick="entradas();">HACER UNA ENTRADA</button>
+                        <br>
+                        <br>
+                        <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                    </div>
+                </div>
+              <br>
+            </div>           
+        </div>
+    </div>
+    </div>
+    </div>
+    <!--######################### CAPA DE SALIDAS ##############################-->
+    <div id="capaSalidas">
+      <nav class="navbar">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3"><a style="color: white; font-size: 16px;font-family: Roboto,Helvetica Neue,Arial; line-height: 1.5; text-transform:uppercase;"><img src="r.png" style="width: 35px;height:40px;margin-bottom:20px"><span class="hola">aisa</span><span> Parking Ceinmark</span></a></div>
+        <div class="col-3"></div>
+        <div class="col-4"></div>
+        <div class="col-1 butt ">
+            <button class="logout">
+            <i class="fa fa-sign-out big"  onclick="verLogin()"></i>
+        </button>
+        </div>
+      </nav>
+      <div class="page-wrapper bg-white p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-body" style="background-color:#D6EAF8">
+                <div id="alta1">
+                    <h2 class="title">REALICE UNA SALIDA</h2>
+                    <div class="input-group">
+                        <input style="background-color:#D6EAF8" class="input--style-2" type="text" placeholder="Introduce la matricula" id="matriculaSalidas">
+                    </div>
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" id="entradaVehiculo"  onclick="salidas();">HACER UNA SALIDA</button>
+                        <br>
+                        <br>
+                        <button class="btn btn--radius btn--green" id="volverCita" value="BUSCAR NIF" onclick="verMenu();">VOLVER AL MENU</button>
+                    </div>
+                </div>
+              <br>
+            </div>           
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <script>
+        let personas=[{nif:"12345678A",contra:"!1234657Aa"}];
+        let propietarios=[{nif:"87654321A",nombre:"Ruben",ape1:"Macias",ape2:"Garcia",telefono:628885532,mail:"rubenmacias@gmail.com"}];
+        let vehiculos=[{matricula:"1234ABC",marca:"Citroen",modelo:"Leon",nifPropietario:"87654321A",dentro:false}];
+        let propietario =new Object();
+        let altaCompleta=false;
+        let contadorEntradas=400;
+        let contadorCompleto='<i class="fas fa-lock"></i> '+" PLAZAS";
+        document.getElementById("contador").innerHTML=contadorEntradas+ " " +contadorCompleto;
+        let matriculaAux="";
+        function ingresarr(){
+            let encontrado=false;
+            let nif=document.getElementById("nif").value;
+            let contra=document.getElementById("contra").value;
+            nif=document.getElementById("nif").value;
+            for(i=0;i<personas.length;i++){
+                if(nif==personas[i].nif&&contra==personas[i].contra){
+                    alert("Persona autorizada");
+                    document.getElementById("capaMenu").style.display="block";
+                    document.getElementById("capaLogueo").style.display="none";
+                    encontrado=true;
+                }else{
+                    alert("Persona autorizada no encontrada, vuelva a itentarlo");
+                    document.getElementById("nif").value="";
+                    document.getElementById("contra").value="";
+                    document.getElementById("nif").focus();
+                }
+                i=personas.length;
+            }
+        }
+        function verAltas(){
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("capaMenu").style.display="none";
+            document.getElementById("capaBajas").style.display="none";
+            document.getElementById("capaEntradas").style.display="none";
+            document.getElementById("capaSalidas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="block";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("alta4").style.display="none";
+            document.getElementById("capaAltas").style.display="block";
+            document.getElementById("back").style.backgroundImage="none";
+        }
+        function verBajas(){
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("capaMenu").style.display="none";
+            document.getElementById("capaAltas").style.display="none";
+            document.getElementById("capaEntradas").style.display="none";
+            document.getElementById("capaSalidas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="none";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("alta4").style.display="none";
+            document.getElementById("back").style.backgroundImage="none";
+            document.getElementById("capaBajas").style.display="block";
+        }
+        function verEntradas(){
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("capaMenu").style.display="none";
+            document.getElementById("capaAltas").style.display="none";
+            document.getElementById("capaBajas").style.display="none";
+            document.getElementById("capaSalidas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="none";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("back").style.backgroundImage="none";
+            document.getElementById("capaEntradas").style.display="block";
+        }
+        function verSalidas(){
+            document.getElementById("capaMenu").style.display="none";
+            document.getElementById("capaAltas").style.display="none";
+            document.getElementById("capaBajas").style.display="none";
+            document.getElementById("capaEntradas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="none";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("alta4").style.display="none";
+            document.getElementById("back").style.backgroundImage="none";
+            document.getElementById("capaSalidas").style.display="block";
+        }
+        function verMenu(){
+          document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("capaSalidas").style.display="none";
+            document.getElementById("capaAltas").style.display="none";
+            document.getElementById("capaBajas").style.display="none";
+            document.getElementById("capaEntradas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="none";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("alta4").style.display="none";
+            document.getElementById("back").style.backgroundImage="url(./coche.jpg)";
+            document.getElementById("capaMenu").style.display="block";
+            document.getElementById("contador").innerHTML=contadorEntradas+ " " +contadorCompleto;
+            $('input[type="text"]').val('');
+            $('input[type="number"]').val('');
+        }
+        function verLogin(){
+          document.getElementById("capaSalidas").style.display="none";
+            document.getElementById("capaAltas").style.display="none";
+            document.getElementById("capaBajas").style.display="none";
+            document.getElementById("capaEntradas").style.display="none";
+            document.getElementById("capaLogueo").style.display="none";
+            document.getElementById("alta1").style.display="none";
+            document.getElementById("alta2").style.display="none";
+            document.getElementById("alta3").style.display="none";
+            document.getElementById("alta4").style.display="none";
+            document.getElementById("capaMenu").style.display="none";
+            document.getElementById("capaLogueo").style.display="block";
+            $('input[type="text"]').val('');
+            $('input[type="password"]').val('');
+        }
+        function buscarNif(){
+            let encontrado=false;
+            nif=document.getElementById("nifPropietario").value;
+            nifValido=validarNif(nif);
+            if(nifValido){
+                for(i=0;i<propietarios.length;i++){
+                    if(nif==propietarios[i].nif){
+                        alert("El nif introducido ya existe en nuestra base de datos, proceda a hacer el alta del vehiculo");
+                        document.getElementById("nifPropietario").setAttribute("disabled","disabled");
+                        document.getElementById("alta3").style.display="block";
+                        econtrado=true;
+                    }else{
+                        alert("Proceda a hacer el alta del vehiculo y del propietario");
+                        document.getElementById("alta2").style.display="block";
+                        econtrado=false;
+                    }
+                    i=propietarios.length;
+                }
+            }else{
+                alert("Introduzca un nif valido");
+            }
+        }
+        function comprobarDatosPropietario(){
+            altaCompleta=true;
+            let bien=true;
+            let nombreAlta=document.getElementById("nombreAlta").value;
+            let ape1Alta=document.getElementById("ape1Alta").value;
+            let ape2Alta=document.getElementById("ape2Alta").value;
+            let tlfAlta=document.getElementById("tlfAlta").value;
+            let mailAlta=document.getElementById("mailAlta").value;
+            //Patrones de comprobacion
+            patronString=/^[A-z]{2,}/;
+            patronTlf=/^[67][0-9]{8}/;
+            patronMail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            //Nombre
+            if(!patronString.test(nombreAlta)){
+                alert("Nombre no valido");
+                document.getElementById("nombreAlta").value="";
+                document.getElementById("nombreAlta").focus();
+                bien=false;
+            }
+            //Ape1
+            if(!patronString.test(ape1Alta)){
+                alert("Primer apellido no valido");
+                document.getElementById("ape1Alta").value="";
+                document.getElementById("ape1Alta").focus();
+                bien=false;
+            }
+            //Ape2
+            if(!patronString.test(ape2Alta)){
+                alert("Segundo apellido no valido");
+                document.getElementById("ape2Alta").value="";
+                document.getElementById("ape2Alta").focus();
+                bien=false;
+            }
+            //Telefono
+            if(!patronTlf.test(tlfAlta)){
+                alert("Telefono no valido");
+                document.getElementById("tlfAlta").value="";
+                document.getElementById("tlfAlta").focus();
+                bien=false;
+            }
+            //Mail
+            if(!patronMail.test(mailAlta)){
+                alert("Mail no valido");
+                document.getElementById("mailAlta").value="";
+                document.getElementById("mailAlta").focus();
+                bien=false;
+            }
+            return bien;
+        }
+        function validarNif(nif){
+            let bien=true;
+            numeros=parseInt(nif);
+            nifConLetra=sacarNif(nif);
+            if(bien){
+                    if(numeros>100000000 || numeros<0){// numeros.length!=8
+                         bien=false;
+                         alert("Los numeros del nif no son correctos");
+                    }     
+            }
+            if(!bien){
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+            }  
+            if(nifConLetra=false){
+                bien=false;
+            }
+            return bien;
+        }   
+        function sacarNif(nif){
+            let nifViejo=nif;
+            let numeros = parseInt(nif);
+            let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            let Posicion= numeros % 23;//calculo de la letra correcta
+            let Letra = letras[Posicion];//La coje de la lista de opciones
+            nif=numeros+Letra;
+            if(nifViejo!=nif){
+                return false;
+            }
+            nofConLetra=nif;
+            return nifConLetra;
+        }
+        function buscarMatricula(){
+            if(matriculaAux.length!=0){
+              document.getElementById("matricula").setAttribute("disabled","disabled");
+            }
+            matricula=document.getElementById("matricula").value;
+            let bien=true;
+            patronMatricula=/^[0-9]{4}[A-z]{3}/;
+            //Marca
+            if(!patronMatricula.test(matricula)){
+                alert("Matricula no valida");
+                document.getElementById("matricula").value="";
+                document.getElementById("matricula").focus();
+                bien=false;
+            }else{
+                let encontrado=false;
+                for(i=0;i<vehiculos.length;i++){
+                    if(matricula==vehiculos[i].matricula){
+                        alert("La matricula introducida ya existe en nuestra base de datos, introduzca otra");
+                        document.getElementById("matricula").value="";
+                        document.getElementById("matricula").focus();
+                        encontrado=true;
+                    }else{
+                        document.getElementById("alta4").style.display="block";
+                        document.getElementById("matricula").setAttribute("disabled","disabled");
+                    }
+                }
+            }
+        }
+        function altaVehiculo(){
+            let okay=comprobarDatosVehiculo();
+            if(okay){
+                if(altaCompleta){
+                    propietarios.push(propietario);
+                    alert("Propietario dado de alta");
+                }
+                let vehiculo =new Object();
+                if(matriculaAux.length==0){
+                  vehiculo.matricula=document.getElementById("matricula").value;
+                }else{
+                  vehiculo.matricula=matriculaAux;
+                }
+                vehiculo.matricula=document.getElementById("matricula").value;
+                vehiculo.marca=document.getElementById("marcaAlta").value;
+                vehiculo.modelo=document.getElementById("modeloAlta").value;
+                vehiculo.color=document.getElementById("colorAlta").value;
+                vehiculo.nifPropietario=document.getElementById("nifPropietario").value;
+                vehiculo.dentro=false;//Siempre esta fuera del parking
+                vehiculos.push(vehiculo);
+                alert("Alta completa");
+                matriculaAux="";
+                verMenu();
+            }
+            altacompleta=false;
+        }
+        function altaPropietario(){
+            let okay=comprobarDatosPropietario();
+            if(okay){
+                document.getElementById("alta3").style.display="block";
+                document.getElementById("alta1").style.display="none";
+                document.getElementById("alta2").style.display="none";
+                propietario.nif=document.getElementById("nifPropietario").value;
+                propietario.nombre=document.getElementById("nombreAlta").value;
+                propietario.ape1=document.getElementById("ape1Alta").value;
+                propietario.ape2=document.getElementById("ape2Alta").value;
+                propietario.tlf=document.getElementById("tlfAlta").value;
+                propietario.mail=document.getElementById("mailAlta").value;
+            }
+        }
+        function comprobarDatosVehiculo(){
+            let bien=true;
+            let marcaAlta=document.getElementById("marcaAlta").value;
+            let modeloAlta=document.getElementById("modeloAlta").value;
+            //Patrones de comprobacion
+            patronString=/^[A-z]{2,}/;        
+            //Marca
+            if(!patronString.test(marcaAlta)){
+                alert("Marca no valida");
+                document.getElementById("marcaAlta").value="";
+                document.getElementById("marcaAlta").focus();
+                bien=false;
+            }
+            //Modelo
+            if(!patronString.test(modeloAlta)){
+                alert("Modelo no valida");
+                document.getElementById("modeloAlta").value="";
+                document.getElementById("modeloAlta").focus();
+                bien=false;
+            }
+            return bien;
+        }
+        function baja(){
+            let encontrado=1;
+            let matricula=document.getElementById("matriculaBaja").value;
+            for(i=0;i<vehiculos.length;i++){
+                if(matricula==vehiculos[i].matricula){
+                    let a=confirm("Estas seguro de querer dar de baja al vehiculo");
+                    if(a){
+                        for(x=0;x<vehiculos.length;x++){
+                            if(vehiculos[x].nifPropietario==vehiculos[i].nifPropietario){
+                                encontrado++;
+                                x=vehiculos.length;
+                            }
+                        }
+                        if(encontrado<3){
+                            for(y=0;y<propietarios.length;y++){
+                                if(propietarios[y].nif==vehiculos[i].nifPropietario){
+                                    propietarios.splice(y,1);
+                                    alert("Se ha dado de baja el propietario y el vehiculo");
+                                    document.getElementById("matriculaBaja").value="";
+                                    document.getElementById("matriculaBaja").focus();
+                                    y=propietarios.length;
+                                }
+                            }
+                            vehiculos.splice(i,1);
+                        }else{
+                            vehiculos.splice(i,1);
+                            alert("Vehiculo dado de baja");
+                            document.getElementById("matriculaBaja").value="";
+                            document.getElementById("matriculaBaja").focus();
+                        }
+                        i=vehiculos.length;
+                    }else{
+                      alert("Cancelando baja...");
+                    }
+                }else{
+                  alert("Matricula no existente");
+                  document.getElementById("matriculaBaja").value="";
+                  document.getElementById("matriculaBaja").focus();
+                }
+            }
+        }
+        function entradas(){
+            let okay=false;
+            let matricula=document.getElementById("matriculaEntradas").value;
+            for(i=0;i<vehiculos.length;i++){
+                if(matricula==vehiculos[i].matricula){
+                  okay=true;
+                  vehiculos[i].dentro=true;
+                  contadorEntradas--;
+                  alert("Entrada realizada");
+                  verMenu();
+                  i=vehiculos.length;
+                }
+            }
+            if(!okay){
+              matriculaAux=matricula;
+              document.getElementById("matricula").value=matriculaAux;
+              alert("La matricula que introdujiste no existe, proceda a hacer el alta de ese vehiculo");
+              verAltas();
+            }
+        }
+        function salidas(){
+            let okay=false;
+            let matricula=document.getElementById("matriculaSalidas").value;
+            for(i=0;i<vehiculos.length;i++){
+                if(matricula==vehiculos[i].matricula){
+                  if(vehiculos[i].dentro){
+                    okay=true;
+                    let a=confirm("Esta seguro de sacar el vehiculo?");
+                    if(a){
+                        vehiculos[i].dentro=false;
+                        alert("El vehiculo ha salido");
+                        contadorEntradas++;
+                    }else{
+                        alert("Cancelando salida...");
+                    }
+                  }else{
+                    alert("El vehiculo no esta dentro de nuestro parking");
+                  }
+                  i=vehiculos.length;
+                }
+            }
+            verMenu();
+        }
+    </script>
+</body>
+</html>

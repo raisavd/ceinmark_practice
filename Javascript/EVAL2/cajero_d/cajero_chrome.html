@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+<head>
+    <!--Linkado de css-->
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet">
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- TOAST -->
+    <link href="Alertas/toastr.min.css" rel="stylesheet" />
+    <script src="Alertas/toastr.min.js"></script>
+</head>
+
+<body>
+    <!--######################### CAPA DE SWITCH ##############################-->
+    <div id="capaSwitch">
+        <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+            <div class="wrapper wrapper--w960">
+                <div class="card card-2">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="card-heading"><img src="./p.png" style="width: 100px;"></div>
+                            <h2 class="title">BIENVENIDO A SU BANCO</h2>
+                            <h3 class="title">¡Pulsa el boton para comenzar!</h3>
+                            <br><br>
+                            <label class="switch">
+                                <input type="checkbox" class="input" id="switch">
+                                <div class="rail">
+                                    <span class="circle"></span>
+                                </div>
+                                <span class="indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--######################### CAPA DE LOGUEO ##############################-->
+    <div id="capaBotones" class="botones">
+        <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+            <div class="wrapper wrapper--w960">
+                <div class="card card-2">
+                    <div class="card-body" style="text-align: center;">
+                        <div id="datos"></div>
+                        <div id="textoTarjeta">
+                            <h3 class="title">Introduzca el numero de la tarjeta</h3>
+                        </div>
+                        <div id="textoPin">
+                            <h3 class="title">Introduzca el pin de la tarjeta</h3>
+                        </div>
+                        <div id="textoNif">
+                            <h3 class="title">Introduzca el nif del propietario</h3>
+                        </div>
+                        <div id="textoRetirada">
+                            <h2 class="title">CANTIDAD A RETIRAR </h2>
+                        </div>
+                        <div id="textoIngreso">
+                            <h2 class="title">CANTIDAD A INGRESAR </h2>
+                        </div>
+                        <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
+                            <div class="btn-group" id="tarjeta">
+                                <input type="number" class="text-center form-control-lg mb-2" id="dato" disabled>
+                            </div>
+                            <div class="btn-group" id="pass">
+                                <input type="password" class="text-center form-control-lg mb-2" id="dato2" disabled>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b1">1</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b2">2</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b3">3</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b4">4</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b5">5</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b6">6</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b7">7</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b8">8</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b9">9</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary py-3" disabled></button>
+                                <button type="button" class="btn btn-outline-secondary py-3" id="b0">0</button>
+                                <button type="button" class="btn btn-outline-secondary py-3" disabled></button>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div id="capaLogueo">
+                            <button type="button" class="btn btn--radius btn--green"
+                                onclick="validarTarjeta();">Go</button>
+                        </div>
+                        <div id="capaNif">
+                            <button type="button" class="btn btn--radius btn--green" onclick="validarNif();">Go</button>
+                        </div>
+                        <div id="capaPin">
+                            <button type="button" class="btn btn--radius btn--green" onclick="validarPin();">Go</button>
+                        </div>
+                        <div id="capaIngresos">
+                            <button type="button" class="btn btn--radius btn--green"
+                                onclick="hacerIngreso();">Go</button>
+                        </div>
+                        <div id="capaRetiradas">
+                            <button type="button" class="btn btn--radius btn--green"
+                                onclick="hacerRetirada();">Go</button>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn--radius btn--green" id="borrarTodo">BORRAR</button>
+                        <button type="button" class="btn btn--radius btn--green" id="borrar1">CORREGIR</button>
+                        <button type="button" class="btn btn--radius btn--green" id="cancelar" onclick="cancelar();"
+                            style="align-items: center;">CANCELAR</button>
+                        <div id="capaCantidades">
+                            <button type="button" class="btn btn--radius btn--green" id="meter10" value="10">10</button>
+                            <button type="button" class="btn btn--radius btn--green" id="meter20" value="20">20</button>
+                            <button type="button" class="btn btn--radius btn--green" id="meter50" value="50">50</button>
+                            <button type="button" class="btn btn--radius btn--green" id="meter100"
+                                value="100">100</button>
+                            <button type="button" class="btn btn--radius btn--green" id="meter200"
+                                value="200">200</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---######################################### CAPA DE ACCIONES ###############################-->
+    <div id="capaAcciones">
+        <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+            <div class="wrapper wrapper--w960">
+                <div class="card card-2">
+                    <div class="card-body">
+                        <h2 class="title" style="text-align: center;">QUE DESEA HACER</h2>
+                        <div class="p-t-30">
+                            <input type="button" class="btn btn--radius btn--green" id="meter" value="INGRESAR DINERO"
+                                onclick="verIngresos();">
+                            <input type="button" class="btn btn--radius btn--green" id="sacar" value="RETIRAR DINERO"
+                                onclick="verRetiradas();">
+                            <input type="button" class="btn btn--radius btn--green" id="sacar" value="CONSULTAR SALDO"
+                                onclick="verSaldo();">
+                            <input type="button" class="btn btn--radius btn--green" id="volver" value="SALIR"
+                                onclick="verSwitch();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---######################################### CAPA DE SALDO ###############################-->
+    <div id="capaSaldo">
+        <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+            <div class="wrapper wrapper--w960">
+                <div class="card card-2">
+                    <div class="card-body">
+                        <h2 class="title" style="text-align: center;">ESTE ES SU SALDO</h2>
+                        <div class="p-t-30">
+                            <div id="saldo">
+                                <table id="tabla2">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Saldo</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <input type="button" class="btn btn--radius btn--green" value="VOLVER"
+                                onclick="verAcciones();">
+                            <input type="button" class="btn btn--radius btn--green" value="SALIR"
+                                onclick="verSwitch();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---######################################### CAPA DE MODALES ###############################-->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" id="waitDialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">OPERACION</h5>
+                </div>
+                <div class="modal-body">
+                    <table id="tabla">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cambio</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        onclick="verAcciones();">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---######################################### SCRIPT ###############################-->
+    <script>
+        //TARJETA 16 DIGITOS NUMERICOS
+        //############################## FUNCIONALIDAD DE BOTONES ###########################
+        $("#switch").click(function () {
+            if ($("#switch").is(':checked')) {
+                setTimeout(() => { verLogin() }, 1000);
+            }
+        });
+        $("#b1").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "1";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "1";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b2").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "2";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "2";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b3").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "3";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "3";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b4").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "4";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "4";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b5").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "5";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "5";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b6").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "6";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "6";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b7").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "7";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "7";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b8").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "8";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "8";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b9").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "9";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "9";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#b0").click(function () {
+            dato = $('#dato').val();
+            dato2 = $('#dato2').val();
+            //Comprobamos la longitud de caracteres
+            if (dato.length < 8) {
+                if (dato2.length < 4) {
+                    if (pass) {
+                        n = $("#dato2").val();
+                        n += "0";
+                        $("#dato2").val(n);
+                    } else {
+                        n = $("#dato").val();
+                        n += "0";
+                        $("#dato").val(n);
+                    }
+                    return true;
+                } else {
+                    swal('Maximo 4 caracteres', "", "error");
+                    $("#dato2").val('');
+                    return false;
+                }
+            }
+            else {
+                swal('Maximo 8 caracteres', "", "error");
+                $("#dato").val('');
+                return false;
+
+            }
+        });
+        $("#borrarTodo").click(function () {
+            if (pass) {
+                document.getElementById("dato2").value = "";
+            } else {
+                document.getElementById("dato").value = "";
+            }
+        });
+        $("#borrar1").click(function () {
+            if (pass) {
+                let str = document.getElementById("dato2").value;
+                str = str.substring(0, str.length - 1);
+                document.getElementById("dato2").value = str;
+            } else {
+                let str = document.getElementById("dato").value;
+                str = str.substring(0, str.length - 1);
+                document.getElementById("dato").value = str;
+            }
+        });
+        $("#meter10").click(function () {
+            n = $("#meter10").val();
+            suma += parseInt(n);
+            $("#dato").val(suma);
+        });
+        $("#meter20").click(function () {
+            n = $("#meter20").val();
+            suma += parseInt(n);
+            $("#dato").val(suma);
+        });
+        $("#meter50").click(function () {
+            n = $("#meter50").val();
+            suma += parseInt(n);
+            $("#dato").val(suma);
+        });
+        $("#meter100").click(function () {
+            n = $("#meter100").val();
+            suma += parseInt(n);
+            $("#dato").val(suma);
+        });
+        $("#meter200").click(function () {
+            n = $("#meter200").val();
+            suma += parseInt(n);
+            $("#dato").val(suma);
+        });
+        //############################## ARRAY DE USUARIOS ###########################
+        let usuarios = [{
+            ntarjeta: 12345678, pin: 1234, dinero: 101, bloqueado: false, intentos: 3,
+            nif: 72189684, nombre: "Raisa", apellido: "Vicente"
+        },
+        {
+            ntarjeta: 87654321, pin: 4321, dinero: 200, bloqueado: true, intentos: 0,
+            nif: 12345678, nombre: "Raul", apellido: "Campos"
+        }];
+        //############################## VARIABLES DE FUNCIONALIDAD DE CODIGO ###########################
+        let suma = 0;
+        let tarjetaActual = null;
+        let index = null;
+        let pass = false;
+        let login = false;
+        let acciones = false;
+        //############################## FUNCIONALIDAD DE CAPAS ###########################
+        function verSwitch() {
+            document.getElementById("switch").checked = false;
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "none";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "none";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "block";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            login = false;
+        }
+        function verLogin() {
+            document.getElementById("capaLogueo").style.display = "block";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "block";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "block";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "block";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            index = null;
+            pass = false;
+            acciones = false;
+            document.getElementById("cancelar").style.display = "none";
+            document.getElementById("datos").value = "";
+        }
+        function verAcciones() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "block";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "none";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "none";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("dato").value = "";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            pass = false;
+            acciones = true;
+            suma = 0;
+            $("#tabla").find("tr:not(:first)").remove();
+            $("#tabla2").find("tr:not(:first)").remove();
+        }
+        function verIngresos() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "block";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "block";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "block";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "block";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "block";
+        }
+        function verRetiradas() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "block";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "block";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "block";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "block";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "block";
+            document.getElementById("textoIngreso").style.display = "none";
+        }
+        function verPin() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "block";
+            document.getElementById("capaBotones").style.display = "block";
+            document.getElementById("pass").style.display = "block";
+            document.getElementById("tarjeta").style.display = "none";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "block";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            pass = true;
+            login = true;
+            document.getElementById("cancelar").style.display = "block";
+        }
+        function verSaldo() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "none";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "none";
+            document.getElementById("capaSaldo").style.display = "block";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "none";
+            document.getElementById("datos").value = "";
+            document.getElementById("datos").style.display = "none";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "none";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            sacarSaldo();
+        }
+        function verNif() {
+            document.getElementById("capaLogueo").style.display = "none";
+            document.getElementById("capaAcciones").style.display = "none";
+            document.getElementById("capaIngresos").style.display = "none";
+            document.getElementById("capaRetiradas").style.display = "none";
+            document.getElementById("capaPin").style.display = "none";
+            document.getElementById("capaBotones").style.display = "block";
+            document.getElementById("pass").style.display = "none";
+            document.getElementById("tarjeta").style.display = "block";
+            document.getElementById("capaSaldo").style.display = "none";
+            document.getElementById("capaCantidades").style.display = "none";
+            document.getElementById("capaSwitch").style.display = "none";
+            document.getElementById("capaNif").style.display = "block";
+            document.getElementById("cancelar").style.display = "block";
+            document.getElementById("datos").style.display = "block";
+            document.getElementById("textoTarjeta").style.display = "none";
+            document.getElementById("textoPin").style.display = "none";
+            document.getElementById("textoNif").style.display = "block";
+            document.getElementById("textoRetirada").style.display = "none";
+            document.getElementById("textoIngreso").style.display = "none";
+            document.getElementById("datos").innerHTML = usuarios[index].nombre + " " + usuarios[index].apellido;
+            login = true;
+            pass = false;
+        }
+        function cancelar() {
+            if (acciones) {
+                verAcciones();
+            } else {
+                verSwitch();
+            }
+        }
+        //############################## FUNCIONALIDAD DE CODIGO ###########################
+        function validarTarjeta() {
+            let patron = /^[0-9]{8}$/;
+            let dato = document.getElementById("dato").value;
+            let bien = false;
+            if (!patron.test(dato)) {
+                swal("El numero de tarjeta debe contener 8 digitos del 1-9", "", "info");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                return bien;
+            }
+            for (i = 0; i < usuarios.length; i++) {
+                if (dato == usuarios[i].ntarjeta) {
+                    swal("Tarjeta válida introduzca el pin", "", "success");
+                    bien = true;
+                    index = i;
+                    i = usuarios.length;
+                }
+            }
+            if (!bien) {
+                swal("La tarjeta introducida no existe en nuestra base de datos", "", "error");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                setTimeout(() => { verSwitch() }, 1000);
+            } else {
+                tarjetaActual = dato;
+                verPin();
+            }
+            document.getElementById("dato").value = "";
+            return bien;
+        }
+        function validarNif() {
+            let patron = /^[0-9]{8}$/;
+            let nif = document.getElementById("dato").value;
+            let bien = false;
+            if (!patron.test(parseInt(nif))) {
+                swal("El nif debe contenter 8 digitos", "", "info");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                return false;
+            }
+            if (nif == usuarios[index].nif) {
+                swal("Nif correcto", "", "success");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                verAcciones();
+            } else {
+                swal("Nif incorrecto", "", "error");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                setTimeout(() => { verSwitch() }, 1000);
+            }
+        }
+        function validarPin() {
+            let patron = /^[0-9]{4}$/;
+            let pin = document.getElementById("dato2").value;
+            let bien = false;
+            if (!patron.test(parseInt(pin))) {
+                swal("El pin de tarjeta debe contener 4 digitos del 1-9", "", "info");
+                document.getElementById("dato2").value = "";
+                document.getElementById("dato2").focus();
+                return false;
+            }
+            if (pin == usuarios[index].pin) {
+                if (usuarios[index].bloqueado) {
+                    swal("La tarjeta " + usuarios[index].ntarjeta + " esta bloqueada", "", "error");
+                    document.getElementById("dato2").value = "";
+                    document.getElementById("dato2").focus();
+                    verSwitch();
+                    return false;
+                }
+                bien = true;
+            }
+            if (!bien && !usuarios[index].bloqueado) {
+                usuarios[index].intentos--;
+                swal("Pin incorrecto, te quedan " + usuarios[index].intentos + " intentos", "", "error");
+                if (usuarios[index].intentos < 1) {
+                    swal("La tarjeta " + usuarios[index].ntarjeta + " ha sido bloqueada", "", "info");
+                    document.getElementById("dato2").value = "";
+                    document.getElementById("dato").value = "";
+                    usuarios[index].bloqueado = true;
+                    verSwitch();
+                    return true;
+                }
+            }
+            if (!bien && usuarios[index].bloqueado) {
+                swal("Pin incorrecto", "", "error");
+                document.getElementById("dato2").value = "";
+                document.getElementById("dato2").focus();
+            }
+            if (!bien) {
+                document.getElementById("dato2").value = "";
+                document.getElementById("dato2").focus();
+            } else {
+                document.getElementById("dato2").value = "";
+                swal("Pin correcto, introduzca el nif", "", "success");
+                verNif();
+            }
+            return bien;
+        }
+        function sacarSaldo() {
+            let fecha = sacarFechaActual();
+            let tabla = document.getElementById("tabla2"); // creacion de la tabla dinamica
+            user = usuarios[index];
+            var fila = document.createElement("tr"); //crea las filas
+
+            var celdaFecha = document.createElement("td");
+            var textoFecha = document.createTextNode(fecha);//meto un nodo de texto para la introduccion del texto
+            celdaFecha.appendChild(textoFecha); //mete el texto dentro del td
+            fila.appendChild(celdaFecha); //mete el texto dentro del tr
+
+            var celdaSaldo = document.createElement("td");
+            var textoSaldo = document.createTextNode(user.dinero + "€");//meto un nodo de texto para la introduccion del texto
+            celdaSaldo.appendChild(textoSaldo); //mete el texto dentro del td
+            fila.appendChild(celdaSaldo); //mete el texto dentro del tr
+
+            tabla.appendChild(fila);
+        }
+        function hacerIngreso() {
+            let dato = document.getElementById("dato").value;
+            let redondeo = dato;
+            let a = true;
+            if (dato == 0) {
+                swal("El dato no puede estar vacio", "", "info");
+                return;
+            }
+            if (dato % 10 != 0) {
+                redondeo = redondear(dato);
+                document.getElementById("dato").value = redondeo;
+                a = confirm("Quieres que se introduzca " + redondeo + "€?");
+            }
+            if (!a) {
+                swal("Solo se admiten multiplos de 10", "", "info");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                return;
+            } else {
+                usuarios[index].dinero = parseInt(redondeo) + parseInt(usuarios[index].dinero);
+                mostrarTabla();
+            }
+        }
+        function hacerRetirada() {
+            let dato = document.getElementById("dato").value;
+            let redondeo = dato;
+            let a = true;
+            if (dato == 0) {
+                swal("El dato no puede estar vacio", "", "info");
+                return;
+            }
+            if (dato < 10) {
+                swal("La cantidad minima para retirar son 10", "", "info");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                return;
+            }
+            if (dato % 10 != 0) {
+                redondeo = redondear(dato);
+                document.getElementById("dato").value = redondeo;
+                a = confirm("Quieres que se retire " + redondeo + "€?");
+            }
+            if (!a) {
+                swal("Solo se admiten multiplos de 10", "", "info");
+                document.getElementById("dato").value = "";
+                document.getElementById("dato").focus();
+                return;
+            }
+            if (usuarios[index].dinero - dato >= 0) {
+                usuarios[index].dinero = parseInt(usuarios[index].dinero) - parseInt(redondeo);
+                mostrarTabla();
+                //setTimeout(() => { verAcciones() }, 1000);
+            } else {
+                swal("Saldo insuficiente, no es posible retirar dinero", "", "error");
+                verAcciones();
+            }
+        }
+        function mostrarTabla() {
+            var myModal = document.getElementById('staticBackdrop');
+            var modal = bootstrap.Modal.getOrCreateInstance(myModal)
+            modal.show()
+            let fecha = sacarFechaActual();
+            let dato = document.getElementById("dato").value;
+            let tabla = document.getElementById("tabla"); // creacion de la tabla dinamica
+            user = usuarios[index];
+            var fila = document.createElement("tr"); //crea las filas
+
+            var celdaFecha = document.createElement("td");
+            var textoFecha = document.createTextNode(fecha);//meto un nodo de texto para la introduccion del texto
+            celdaFecha.appendChild(textoFecha); //mete el texto dentro del td
+            fila.appendChild(celdaFecha); //mete el texto dentro del tr
+
+            var celdaNombre = document.createElement("td"); //crea las columnas
+            var textoNombre = document.createTextNode(user.nombre);//meto un nodo de texto para la introduccion del texto
+            celdaNombre.appendChild(textoNombre); //mete el texto dentrp de los td, en este caso el dni
+            fila.appendChild(celdaNombre); //mete en los tr el dni
+
+            var celdaApellido = document.createElement("td");
+            var textoApellido = document.createTextNode(user.apellido);//meto un nodo de texto para la introduccion del texto
+            celdaApellido.appendChild(textoApellido); //mete el texto dentro del td
+            fila.appendChild(celdaApellido); //mete el texto dentro del tr
+
+            var celdaIngreso = document.createElement("td");
+            var textoIngreso = document.createTextNode(dato + "€");//meto un nodo de texto para la introduccion del texto
+            celdaIngreso.appendChild(textoIngreso); //mete el texto dentro del td
+            fila.appendChild(celdaIngreso); //mete el texto dentro del tr
+
+            var celdaSaldo = document.createElement("td");
+            var textoSaldo = document.createTextNode(user.dinero + "€");//meto un nodo de texto para la introduccion del texto
+            celdaSaldo.appendChild(textoSaldo); //mete el texto dentro del td
+            fila.appendChild(celdaSaldo); //mete el texto dentro del tr
+
+            tabla.appendChild(fila);
+        }
+        function sacarFechaActual() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = mm + '/' + dd + '/' + yyyy;
+            //document.write(today);
+            return today;
+        }
+        function redondear(dato) {
+            if (dato % 10 != 0) {
+                dato = redondear(dato - 1);
+            }
+            return dato;
+        }
+    </script>
+</body>
+
+</html>

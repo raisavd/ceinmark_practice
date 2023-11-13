@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body> 
+        <script>
+            let trabajadores=[{nif:"12345678A",nombre:"Ignacio",apellido:"Piaggio"},{nif:"87654321B",nombre:"Raisa",apellido:"Vicente"}];//Creamos el array de objetos
+            let valido=true;//Booleana para validez de dato
+            let niff, nombree, apellidoo;
+                do{
+                    niff=prompt("Introduzca un nif");
+                    if(niff.length!=9){
+                        valido=false;
+                    }
+                    for(i=0;i<trabajadores.length;i++){
+                        if(niff==trabajadores[i].nif){
+                            valido=false;
+                            alert("Ya esta dado de alta en la base de datos");
+                        }
+                    }
+                }while(!valido);
+                do{
+                    nombree=prompt("Introduzca un nombre");
+                    if(nombree.length!=0&&!isNaN(nombree)){
+                        valido=false;
+                    }
+                }while(!valido);
+                do{
+                    apellidoo=prompt("Introduzca un apellido");
+                    if(apellidoo.length!=0&&!isNaN(apellidoo)){
+                        valido=false;
+                    }
+                }while(!valido);
+
+                if(valido){
+                    let trabajador={
+                        nif:niff,
+                        nombre:nombree,
+                        apellido:apellidoo
+                    };
+                    trabajadores.push(trabajador);
+                }
+                for(i=0;i<trabajadores.length;i++){
+                    console.log("matame");
+                        document.write("Empleado "+i+"<br>"+ "Nif: "+trabajadores[i].nif+" <br>"+ "Nombre: "+trabajadores[i].nombre+"<br>"+ "Apellido: "+trabajadores[i].apellido+"<br>");
+
+                    }
+        </script>
+    </body>
+</html>

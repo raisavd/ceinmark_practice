@@ -1,0 +1,6 @@
+DAW;Ceinmark;25
+DAM;Ceinmark;24
+Turismo;Ceinmark;23
+DAW;San Jorge;20
+Peluqueria;San Jorge;30
+Peluqueria;Bilbao;22

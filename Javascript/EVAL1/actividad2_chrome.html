@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+    <head>
+        <body>
+            <script>
+                function Comprobar(){//Funcion para comprobar que el numero sea valido
+                    let numero;//Declaramos la variable de numero
+                    let booleano;
+                    do{
+                        numero=prompt("Introduce un numero");//Pedimos el primer número
+                        booleano=false;//Inicializamos a false
+                        if(!isNaN(numero)&&numero.length!=0){//Comprobamos que sea numero y no este vacio
+                            booleano=true;//Decimos que es correctisimo
+                        }
+                    }while(!booleano);//Comprobacion de sea numero y no este vacio
+                        return numero;//Retornar el valor
+                    
+                }
+                let num1=Comprobar();//Comprobar num1
+                let num2=Comprobar();//Comprobar num2   
+                let num3=Comprobar();//Comprobar num3
+                let numeros=[num1,num2,num3];//Meto los numeros en un array para ordenarlos
+                let aux;//Para ordenar los numeros
+                //Para ordenar papi
+                for(i=0;i<numeros.length;i++){//Recorrer el array
+                    for(j=i+1;j<numeros.length;j++){//Recorrerlo una segunda vez
+                        if(numeros[j]<numeros[i]){//Mirar si el resto es menor que i
+                            aux=numeros[i];//Meter i en una variable a parte
+                            numeros[i]=numeros[j];//Hago que i coja el valor de j
+                            numeros[j]=aux;//Donde estaria j meto el valor que tenia i
+                        }
+                    }
+                }
+                alert("Estos son los numeros: "+numeros);
+                /*
+                let numeros=[num1,num2,num3];//Meto los numeros en un array para ordenarlos
+                numeros.sort();//Los ordeno de forma ascendente
+                alert("Estos son tus numeros "+numeros);//Los muestro en pantalla
+                //Solicitar 3 numeros por pantalla y poner de mayor a menor
+                */
+            </script>
+        </body>
+    </head>
+</html>

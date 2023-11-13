@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<head>
+    <style>
+   *{
+   box-sizing: border-box;
+   font-family: "Merriweather Sans", sans-serif;
+}
+
+body{
+   background-color: #B0DBEE;
+}
+   
+   #form{
+      color: white;
+      background-color: #009EDF;
+      border-radius: 5px;
+      text-align: center;
+      
+      width: 400px;
+      padding: 40px;
+      margin: 150px auto;
+      
+      -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+   }
+      p{
+         font-size: 0.9em;
+      }
+      
+      button{
+         width: 100%;
+         text-align: center;
+         color: grey;
+         margin-top: 20px;
+         border: 1px solid rgba(0,0,0,0.4);
+      }
+      
+      .form-group{
+         margin: 15px auto;
+      }
+         label{
+            font-weight: bold;
+            font-size: 0.9em;
+         }
+        
+         .input-group{
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+         }  
+            .input-group-addon{
+               border: none;
+               border-right: 1px solid rgba(0,0,0,0.2);
+            }
+            
+            input{
+               padding-left: 10px;
+               
+            } 
+         input{
+            padding: 3px;
+            width: 100%;
+            border: none;
+            border-radius: 0 5px 5px 0;
+         }
+         #capaCitas,#recogerCita,#altaCita,#capaConsultas{
+            display:none;
+         }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form">
+        <div id="capaMenu">
+            <h4>BIENVENID@ AL DENTISTA</h4>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="altas" value="ALTAS" onclick="verCitas();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="altas" value="CONSULTAS" onclick="verConsultas();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="salir" value="SALIR" onclick="cerrar();">
+            </div>
+        </div>
+        <div id="capaCitas">
+            <h4>PEDIR UNA CITA</h4>
+            <br>
+            <div class="form-group">
+                <label for="n1">Introduce el Nif:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nif"/>
+                 </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="consultarCita" value="BUSCAR NIF" onclick="buscarNif();">
+                <br>
+                <br>
+                <input type="button" class="btn btn-primary" id="volverCita" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+            <div id="recogerCita">
+                <div class="form-group">
+                    <label for="n1">Introduce fecha de la cita:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="fecha"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce la hora de la cita:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="hora"/>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <input type="button" class="btn btn-primary" id="botonCita" value="PEDIR LA CITA" onclick="hacerCita();">
+                    <br>
+                    <br>
+                    <input type="button" class="btn btn-primary" id="volverAlta" value="VOLVER AL MENU" onclick="verMenu();">
+                </div>
+            </div>
+            <div id="altaCita">
+                <div class="form-group">
+                    <label for="n1">Introduce el nombre del paciente:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nombre"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el primer apellido del paciente:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ape1"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el segundo apellido del paciente:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ape2"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el telefono del paciente:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="tlf"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce fecha de la cita:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="fechaAlta"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce la hora de la cita:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="horaAlta"/>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <input type="button" class="btn btn-primary" id="botonAlta" value="DAR DE ALTA" onclick="hacerAlta();">
+                    <br>
+                    <br>
+                    <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+                </div>
+            </div>
+        </div>
+        <div id="capaConsultas">
+            <h4>HACER UNA CONSULTA</h4>
+            <br>
+            <div class="form-group">
+                <label for="n1">Introduce el dia:</label>
+                <br>
+                <div class="input-group">
+                    <input type="date" class="form-control" id="diaCons"/>
+                 </div>
+            </div>
+            <table id="tabla" class="table table-sm">
+
+            </table>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="cons" value="HACER UNA CONSULTA" onclick="hacerCons();">
+                <br>
+                <br>
+                <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+        </div>
+    </form>
+    <script>
+        function verCitas(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaCitas').style.display="block";
+            document.getElementById('capaConsultas').style.display="none";
+        }
+        function verConsultas(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaCitas').style.display="none";
+            document.getElementById('capaConsultas').style.display="block";
+        }
+        function verMenu(){
+            document.getElementById('capaMenu').style.display="block";
+            document.getElementById('capaCitas').style.display="none";
+            document.getElementById('capaConsultas').style.display="none";
+            document.getElementById('recogerCita').style.display="none";
+            document.getElementById('altaCita').style.display="none";
+            //element.setAttribute("disabled","f alse");
+            document.getElementById("nif").value="";
+            document.getElementById("diaCons").value="";
+            document.querySelector("#tabla").remove();//No encontre una forma mas comoda de hacerlo, si lo encuentras avisame
+        }
+        function cerrar(){
+            window.close();
+        }
+        let personas=[{nif:"12345678A",ape1:"Vicente",ape2:"De Juan",nombre:"Raisa",tlf:638248502},{nif:"87654321A",ape1:"Blanco",ape2:"Perez",nombre:"Liher",tlf:628885532}];
+        let citas=[{nifPersona:"12345678A",hora:12,fecha:"2022-11-23"},{nifPersona:"87654321A",hora:11,fecha:"2022-11-23"}];
+        function buscarNif(){
+            let encontrado=false;
+            nif=document.getElementById("nif").value;
+            for(i=0;i<personas.length;i++){
+                if(nif==personas[i].nif){
+                    alert("El nif introducido ya existe en nuestra base de datos,proceda a hacer el alta");
+                    document.getElementById("recogerCita").style.display="block";
+                    encontrado=true;
+                    document.getElementById("nif").setAttribute("disabled","disabled");
+                    document.getElementById("volverCita").style.display="none";
+                }else{
+                    alert("Proceda a hacer el alta");
+                    document.getElementById("nif").setAttribute("disabled","disabled");
+                    document.getElementById("altaCita").style.display="block";
+                    document.getElementById("volverCita").style.display="none";
+                }
+                i=personas.length;
+            }
+        }
+        function comprobarDatos2(){
+            let bien=true;
+            //Patrones de comprobacion
+            patronString=/^[A-z]{2,}/;
+            patronTlf=/^[6-7][0-9]{8}/;
+            patronHora=/^[1-24]{1}/;
+            nif=document.getElementById("nif").value;
+            ape1=document.getElementById("ape1").value;
+            ape2=document.getElementById("ape2").value;
+            nombre=document.getElementById("nombre").value;
+            tlf=document.getElementById("tlf").value;
+            hora=document.getElementById("horaAlta").value;
+            fecha=document.getElementById("fechaAlta").value;
+            //NIF
+            if(!validarNif(nif)){
+                alert("Nif no valido");
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //APE1
+            if(!patronString.test(ape1)){
+                alert("Primer apellido no valido");
+                document.getElementById("ape1").value="";
+                document.getElementById("ape1").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //APE2
+            if(!patronString.test(ape2)){
+                alert("Segundo apellido no valido");
+                document.getElementById("ape2").value="";
+                document.getElementById("ape2").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //NOMBRE
+            if(!patronString.test(nombre)){
+                alert("Segundo apellido no valido");
+                document.getElementById("nombre").value="";
+                document.getElementById("nombre").focus();
+                if(bien){
+                    bien=false;
+                }
+            }   
+            //TELEFONO
+            if(!patronTlf.test(tlf)){
+                alert("Numero de telefono no valido");
+                document.getElementById("tlf").value="";
+                document.getElementById("tlf").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //HORA
+            if(!patronHora.test(hora)){
+                alert("Hora no valida");
+                document.getElementById("horaAlta").value="";
+                document.getElementById("horaAlta").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //FECHA
+            if(document.getElementById("fechaAlta").value==0){
+                alert("Fecha no valida");
+                document.getElementById("fechaAlta").value="";
+                document.getElementById("fechaAlta").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            return bien;  
+        }
+        function comprobarDatos(){
+            let bien=true;
+            //Patrones de comprobacion
+            patronString=/^[A-z]{2,}/;
+            patronTlf=/^[6-7][0-9]{8}/;
+            patronHora=/^[1-24]{1}/;
+            nif=document.getElementById("nif").value;
+            hora=document.getElementById("hora").value;
+            fecha=document.getElementById("fecha").value;
+            //NIF
+            if(!validarNif(nif)){
+                alert("Nif no valido");
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //HORA
+            if(!patronHora.test(hora)){
+                alert("Hora no valida");
+                document.getElementById("hora").value="";
+                document.getElementById("hora").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //FECHA
+            if(document.getElementById("fecha").value==0){
+                alert("Fecha no valida");
+                document.getElementById("fecha").value="";
+                document.getElementById("fecha").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            return bien;  
+        }
+        function validarNif(nif){
+            let bien=true;
+            numeros=parseInt(nif);
+            //nifConLetra=sacarNif(nif);
+            if(bien){
+                    if(numeros>100000000 || numeros<0){// numeros.length!=8
+                         bien=false;
+                         alert("Los numeros del nif no son correctos");
+                    }     
+            }
+            if(!bien){
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+            }  
+            return bien;
+        }   
+        function sacarNif(nif){
+            let numeros = parseInt(nif);
+            let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            let Posicion= numeros % 23;//calculo de la letra correcta
+            let Letra = letras[Posicion];//La coje de la lista de opciones
+            nif =numeros+Letra;
+            nofConLetra=nif;
+            return nifConLetra;
+        }
+        function hacerAlta(){
+            let bien=comprobarDatos2();
+            if(bien){
+                nif=document.getElementById("nif").value;
+                ape1=document.getElementById("ape1").value;
+                ape2=document.getElementById("ape2").value;
+                nombre=document.getElementById("nombre").value;
+                tlf=document.getElementById("tlf").value;
+                hora=document.getElementById("horaAlta").value;
+                fecha=document.getElementById("fechaAlta").value;
+                let persona = new Object();
+                persona.nif=nif;
+                persona.ape1=ape1;
+                persona.ape2=ape2;
+                persona.nombre=nombre;
+                persona.tlf=tlf;
+                personas.push(persona);
+                let cita =new Object();
+                citas.hora=hora;
+                citas.fecha=fecha;
+                personas.push(cita);
+                alert("Persona dada de alta");
+                document.getElementById("nif").value="";
+                document.getElementById("ape1").value="";
+                document.getElementById("ape2").value="";
+                document.getElementById("nombre").value="";
+                document.getElementById("tlf").value="";
+                document.getElementById("horaAlta").value="";
+                document.getElementById("fechaAlta").value="";
+                verMenu();
+            }
+        }
+        function hacerCita(){
+            let bien=comprobarDatos();
+            if(bien){
+                nif=document.getElementById("nif").value;
+                hora=document.getElementById("hora").value;
+                fecha=document.getElementById("fecha").value;
+                let cita =new Object();
+                citas.nif=nif;
+                citas.hora=hora;
+                citas.fecha=fecha;
+                citas.push(cita);
+                alert("Cita realizada");
+                document.getElementById("nif").value="";
+                document.getElementById("hora").value="";
+                document.getElementById("fecha").value="";
+                verMenu();
+            }
+        }
+        function hacerCons(){
+            let encontrado=false;
+            let index;
+            let dia=document.getElementById("diaCons").value;
+            for(i=0;i<citas.length;i++){
+                if(dia.length!=0){
+                    if(citas[i].fecha==dia){
+                        index=i;
+                        encontrado=true;
+                    }
+                }
+            }
+            if(!encontrado){
+                    alert("No se ha encontrado");
+                }else{
+                    mostrarTabla(index);
+                }
+        }
+        function mostrarTabla(i) { 
+            for(i=0;i<citas.length;i++){
+                for(i=0;i<personas.length;i++){
+                    let tabla=document.getElementById("tabla"); // creacion de la tabla dinamica
+                    let cita=citas[i];
+                    let persona=personas[i];
+                    let fila=document.createElement("tr"); //crea las filas
+
+                    let celdaHora=document.createElement("td");
+                    let textoHora=document.createTextNode(cita.hora);//meto un nodo de texto para la introduccion del texto
+                    celdaHora.appendChild(textoHora); //mete el texto dentro del td
+                    fila.appendChild(celdaHora); //mete el texto dentro del td
+                    tabla.appendChild(fila); 
+
+                    let celdaNif=document.createElement("td"); //crea las columnas
+                    let textoNif=document.createTextNode(persona.nif);//meto un nodo de texto para la introduccion del texto
+                    celdaNif.appendChild(textoNif); //mete el texto dentrp de los td, en este caso el dni
+                    fila.appendChild(celdaNif); //mete en los tr el dni
+
+                    let celdaApe1=document.createElement("td");
+                    let textoApe1=document.createTextNode(persona.ape1);//meto un nodo de texto para la introduccion del texto
+                    celdaApe1.appendChild(textoApe1); //mete el texto dentro del td
+                    fila.appendChild(celdaApe1); //mete el texto dentro del td
+
+                    let celdaNombre=document.createElement("td");
+                    let textoNombre=document.createTextNode(persona.nombre);//meto un nodo de texto para la introduccion del texto
+                    celdaNombre.appendChild(textoNombre); //mete el texto dentro del td
+                    fila.appendChild(celdaNombre); //mete el texto dentro del td
+                    tabla.appendChild(fila); 
+
+                    let celdaTlf=document.createElement("td");
+                    let textoTlf=document.createTextNode(persona.tlf);//meto un nodo de texto para la introduccion del texto
+                    celdaTlf.appendChild(textoTlf); //mete el texto dentro del td
+                    fila.appendChild(celdaTlf); //mete el texto dentro del td
+                    tabla.appendChild(fila);
+                }
+            }
+        }
+    </script>
+</body>
+</hmtl>

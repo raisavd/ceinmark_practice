@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <head>
+        <title>activdad9</title>
+    </head>
+    <body>
+        <form>
+            <div style="border-style: solid; border-color: black; width: 40vw; height: 40vh;margin-left: 25vw;">
+                <p style="margin-left: 8vw;">
+                NOMBRE: <input type="text" name="nombre"  id="nombre"
+                style="margin-left:1.6vw; margin-top:10vh;">
+                <br><br>
+                APELLIDO 1: <input type="text" name="ape1" id="ape1">
+                <br><br>
+                APELLIDO 2: <input type="text" name="ape2" id="ape2">
+                <br><br>
+                <input type="button" name="registrar" value="registrar" onclick="mostrarDatos();" 
+                style="margin-left: 10vw;">
+                </p>
+            </div>
+        </form>
+        <script>
+            //Minimo de caractores en nombres etc 2
+
+            function validarString(){
+                patronString="^[A-Z][a-z]{1,24}$";
+                valido=false;
+                if(!patronString.test(nombre)){
+                    valido=false;
+                    return valido;
+                }
+            }
+            function mostrarDatos(){
+                nombre=document.getElementById("nombre").value;
+                apellido1=document.getElementById("ape1").value;
+                apellido2=document.getElementById("ape2").value;
+                
+                do{
+                    document.getElementById("nombre").value="";
+                    d
+                }while(!valido);
+                document.write("Bienvenid@ :"+"<br>"+nombre+"<br>"+apellido1+"<br>"+apellido2);
+            }
+        </script>
+    </body>
+</hmtl>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body> 
+        <script>
+            let trabajadores=[{nif:"12345678A",nombre:"Ignacio",apellido:"David",apellido2:"Piaggio",edad:"25"},{nif:"87654321B",nombre:"Raisa",apellido:"Vicente",apellido2:"De Juan",edad:"21"},
+            {nif:"52364178K",nombre:"Cristina",apellido:"Florez",apellido2:"Maestre",edad:"21"}];//Creamos el array de objetos
+            let valido=true;//Booleana para validez de dato
+            let encontrado=false;
+            let persona;
+            do{
+                niff=prompt("Introduzca el nif del trabajador a modificar");
+                for(i=0;i<trabajadores.length;i++){
+                    if(niff==trabajadores[i].nif){
+                        encontrado=true;
+                        let edadCorrecta=prompt("Introduzca la edad real");
+                        trabajadores[i].edad=edadCorrecta;
+                        persona=i;
+                        break;
+                    }else{
+                        alert("El trabajador no esta dado de alta en nuesta base de datos");
+                        niff=prompt("Introduzca el nif del trabajador a modificar");
+                    } 
+                }
+            }while(!encontrado);
+            document.write(trabajadores[persona].nombre+"<br>"+trabajadores[persona].apellido+"<br>"+ trabajadores[persona].apellido2+"<br>"+trabajadores[persona].edad);
+        </script>
+    </body>
+</html>

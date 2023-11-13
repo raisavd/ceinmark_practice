@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <style>
+   *{
+   box-sizing: border-box;
+   font-family: "Merriweather Sans", sans-serif;
+}
+
+body{
+   background-color: #B0DBEE;
+}
+   
+   #form{
+      color: white;
+      background-color: #009EDF;
+      border-radius: 5px;
+      text-align: center;
+      
+      width: 400px;
+      padding: 40px;
+      margin: 150px auto;
+      
+      -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+   }
+      p{
+         font-size: 0.9em;
+      }
+      
+      button{
+         width: 100%;
+         text-align: center;
+         color: grey;
+         margin-top: 20px;
+         border: 1px solid rgba(0,0,0,0.4);
+      }
+      
+      .form-group{
+         margin: 15px auto;
+      }
+         label{
+            font-weight: bold;
+            font-size: 0.9em;
+         }
+        
+         .input-group{
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+         }  
+            .input-group-addon{
+               border: none;
+               border-right: 1px solid rgba(0,0,0,0.2);
+            }
+            
+            input{
+               padding-left: 10px;
+               
+            }
+            
+            i{
+               color: #009EDF;
+            }
+         
+         
+         input{
+            padding: 3px;
+            width: 100%;
+            border: none;
+            border-radius: 0 5px 5px 0;
+         }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form">
+        <label>Bienvenid@ </label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="nombre" readonly value=""/>
+        </div>
+    </form>
+    <script>
+        document.getElementById("nombre").value=localStorage.getItem('nombre'); 
+    </script>
+</body>
+</html>

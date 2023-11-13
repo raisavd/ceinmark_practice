@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <script>
+        document.getElementById('capa').style.visibility=none;
+    </script>
+    <form>
+        <div id="capa" style="border-style: solid; border-color: black; width: 40vw; height: 40vh;margin-left: 25vw;">
+            <p style="margin-left: 8vw;">
+            NOMBRE: <input type="text" name="nombre"  id="nombre"
+            style="margin-left:1.6vw; margin-top:10vh;">
+            <br><br>
+            APELLIDO 1: <input type="text" name="ape1" id="ape1">
+            <br><br>
+            APELLIDO 2: <input type="text" name="ape2" id="ape2">
+            <br><br>
+            <input type="button" name="registrar" value="registrar" onclick="comprobar();" 
+            style="margin-left: 10vw;">
+            </p>
+        </div>
+    </form>
+    <script>
+        let bien=true;
+        do{
+            nif=prompt("Introduzca un nif");
+            bien=validarNif(nif);
+            if(!bien){
+                alert("Introduce un nif con 8 numeros y una letra");
+            }
+        }while(!bien);
+        do{
+            nif=prompt("Introduzca un nombre");
+            bien=validarString(nombre);
+            if(!bien){
+                alert("Introduce un nombre valido");
+            }
+        }while(!bien);
+        do{
+            nif=prompt("Introduzca un apellido");
+            bien=validarString(apellido);
+            if(!bien){
+                alert("Introduce un apellido valido");
+            }
+        }while(!bien);
+
+        function validarNif(datos){
+            let bien;
+            if(/[1-9]{8}[A-Z]{1}/.test(datos)){
+                bien=true;
+            }else{
+                bien=false;
+            }
+            return bien;
+        }
+        function validarString(datos){
+            let bien;
+            if(/[A-z]{2,}/.test(datos)){
+                bien=true;
+            }else{
+                bien=false;
+            }
+            return bien;
+        }
+        document.getElementById('capa').style.visibility=block;
+
+        /*nif=prompt("Introduzca un nif");
+            nombre=prompt("Introduzca un nombre");
+            apellido=prompt("Introduce un apellido");
+            if(!patronNif.test(nif)){
+                alert("Introduce un nif correcto");
+                valido=false;
+            }else if(!patronString.test(nombre)){
+                alert("Introduce un nombre correcto");
+                valido=false;
+            }else if(!patronString.test(apellido)){
+                alert("Introduce un apellido correcto");
+                valido=false;
+            }*/
+    </script>
+</body>
+</html>

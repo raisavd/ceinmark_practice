@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body> 
+        <script>
+            let numeros=10;//Para que pida 10 numeros
+            recogidos=[];//El array dond almacenaremos los numeros
+            let valido=true;//Booleano para usarlo mas adelante cuando las condiciones no se completen
+            while(numeros!=0){//Siempre que sean numericos
+                let ventana=prompt("Introduce "+numeros+" numeros (entre el 0 y el 25):");//Ventana en el que pide los numeros
+                valido=true;//Siempre que se cumplan las condiciones
+                if(ventana.length==0){//Cuando este vacio
+                    alert("No ha intoducido ningun dato intentelo de nuevo");//Mensaje de error
+                    valido=false;//En este caso no se completan las condiciones
+                }else if(isNaN(ventana)){//En caso de que no sea numero
+                    alert("Introduzca un numero");//Mensaje de error
+                    valido=false;//No se cumplen las condiciones
+                }else if(ventana<0 ||ventana>25){//Rango de almacenamiento de numeros 
+                    alert("Introduce un numero en el rango valido");//Mensaje de error
+                }
+                /*LA PARTE DE NUMEROS DISTINTOS NO HE SABIDO HACERLO AL FINAL (SI ME PUDIESES DAR LA SOLUCION SERIA INCREIBLE
+                PARA APUNTARMELA PARA LA PROXIMA)
+                }else if(valido=true){
+                    let existe=false;//Booleana que se usara mas adelante
+                    for(i=0;i<recogidos.length;i++){
+                        if(existe=true){//Si los numeros son iguales
+                            alert("Introduzca numeros distintos");//Mensaje de error
+                            existe=false;
+                            valido=false;
+                        }
+                    i=recogidos.length;
+                    }
+                }
+                */
+                //Para comprobar que metemos numeros distintos
+                if(valido){//numero valido, se añade a la array y se combia contador
+                    numeros--;//Ir restando para mostrar los numeros que quedan por teclear
+                    ventana=parseInt(ventana);//Parsear para asegurarse de que sea numero
+                    recogidos.push(ventana);//Metemos los numeros en el array
+                    //Metodo burbuja para ordenarlos
+                    let aux;//Declaro el auxiliar para poder ordenar los numeros
+                    for(i=0;i<recogidos.length;i++){//Recorrer el array
+                        for(j=i+1;j<recogidos.length;j++){//Recorrerlo una segunda vez
+                            if(recogidos[j]<recogidos[i]){//Mirar si el resto es menor que i
+                                aux=recogidos[i];//Meter i en una variable a parte
+                                recogidos[i]=recogidos[j];//Hago que i coja el valor de j
+                                recogidos[j]=aux;//Donde estaria j meto el valor que tenia i
+                            }
+                        }
+                    }
+                }
+            }   
+        document.write("Estos son los numeros que hemos almacenado: ");
+            for(i=0;i<recogidos.length;i++){
+                document.write(recogidos[i]+" ");//Mostrar los numeros con una separacion
+            }
+            //Jeje me faltaba una llave perdon
+        
+        </script>
+    </body>
+</hmtl>

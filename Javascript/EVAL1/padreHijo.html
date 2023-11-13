@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Merriweather Sans", sans-serif;
+        }
+
+        body {
+            background-color: #B0DBEE;
+        }
+
+        #form {
+            color: white;
+            background-color: #009EDF;
+            border-radius: 5px;
+            text-align: center;
+
+            width: 400px;
+            padding: 40px;
+            margin: 150px auto;
+
+            -webkit-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        p {
+            font-size: 0.9em;
+        }
+
+        button {
+            width: 100%;
+            text-align: center;
+            color: grey;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin: 15px auto;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .input-group {
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+            -moz-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+            box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+        }
+
+        .input-group-addon {
+            border: none;
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            padding-left: 10px;
+
+        }
+
+        input {
+            padding: 3px;
+            width: 100%;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+
+        #altaPadre {
+            display: none;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="capaAltas">
+        <h4>USUARIO A DAR DE ALTA</h4>
+        <br>
+        <div id="altaHijo">
+            <div class="form-group">
+                <label for="n1">Introduce el Nif del hijo:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nifHijo" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el nombre del hijo:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nomHijo" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el apellido del hijo:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="apeHijo" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el nif del padre:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nifPadre" />
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="comsultarAlta" value="DAR DE ALTA"
+                    onclick="hacerAlta();">
+                <br>
+            </div>
+        </div>
+        <div id="altaPadre">
+            <div class="form-group">
+                <label for="n1">Introduce el Nif del padre:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nifPadre2" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el nombre del padre:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nomPadre" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el apellido del padre:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="apePadre" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el mail del padre:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="mailPadre" />
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="comsultarAlta" value="DAR DE ALTA"
+                    onclick="altaPadre();">
+                <br>
+            </div>
+        </div>
+        <script>
+            alumnos = [{ nifHijo: "12345678N", nombreHijo: "Carlos", apeHijo: "Sanchez", nifPadre: "987654321N" }, { nifHijo: "123456789A", nombreHijo: "Raisa", apeHijo: "Vicente", nifPadre: "987654321B" }];
+            padres = [{ nif: "987654321B", nombre: "Anibal", apellido: "Vicente", mail: "anibalvicente@gmail.com" }];
+            patronNif = /^([1-9]{8})+([A-Z]{1})*$/;
+            patronMail = /^[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
+            patronString = /^([A-z]{2,})*$/;
+            function hacerAlta() {
+                for (i = 0; i < alumnos.length; i++) {
+                    if (document.getElementById("nifHijo").value == alumnos[i].nifHijo) {
+                        alert("El alumno ya esta dado de alta");
+                    } else {
+                        for (i = 0; i < padres.length; i++) {
+                            if (document.getElementById("nifPadre").value == padres[i].nif) {
+                                nifHijoo = document.getElementById("nifHijo").value;
+                                nomHijoo = document.getElementById("nomHijo").value;
+                                apeHijoo = document.getElementById("apeHijo").value;
+                                nifPadree = document.getElementById("nifPadre").value;
+                                if (patronNif.test(document.getElementById("nifHijo").value)) {
+                                    if (patronString.test(document.getElementById("nomHijo").value)) {
+                                        if (patronString.test(document.getElementById("apeHijo").value)) {
+                                        } else {
+                                            alert("Apeelido no valido");
+                                            apeHijoo = document.getElementById("apeHijo").value = "";
+                                            apeHijoo = document.getElementById("apeHijo").focus();
+                                        }
+                                    } else {
+                                        alert("Nombre no valido");
+                                        nomHijoo = document.getElementById("nomHijo").value = "";
+                                        nomHijoo = document.getElementById("nomHijo").focus();
+                                    }
+
+                                } else {
+                                    let alumno = new Object();
+                                    alumno.nifHijo = nifHijoo;
+                                    alumno.nomHijo = nomHijoo;
+                                    alumno.apeHijo = apeHijoo;
+                                    alumno.nifPadre = nifPadree;
+                                    alumnos.push(alumno);
+                                    alert("Alumno dado de alta");
+                                }
+                            } else {
+                                alert("Nif del alumno no valido");
+                                nifHijoo = document.getElementById("nifHijo").value = "";
+                                nifHijoo = document.getElementById("nifHijo").focus();
+                                document.getElementById("altaHijo").style.display = "none";
+                                document.getElementById("altaPadre").style.display = "block";
+                            }
+                        }
+                        i = alumnos.length;
+                    }
+                }
+            }
+            function altaPadre() {
+                nifPadree2 = document.getElementById("nifPadre2").value;
+                nomPadree = document.getElementById("nomPadre").value;
+                apePadree = document.getElementById("apePadre").value;
+                mailPadree = document.getElementById("mailPadre").value;
+                if (patronNif.test(document.getElementById("nifPadre2").value)) {
+                    let padre = new Object();
+                    padres.nif = nifPadree2;
+                    padres.nomPadre = nomPadree;
+                    padres.apePadre = apePadree;
+                    padres.mailPadre = mailPadree;
+                    padres.push(padre);
+                    alert("Padre dado de alta");
+                }
+            }
+        </script>
+</body>
+
+</html>

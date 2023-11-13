@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<head>
+    <style>
+   *{
+   box-sizing: border-box;
+   font-family: "Merriweather Sans", sans-serif;
+}
+
+body{
+   background-color: #B0DBEE;
+}
+   
+   #form{
+      color: white;
+      background-color: #009EDF;
+      border-radius: 5px;
+      text-align: center;
+      
+      width: 400px;
+      padding: 40px;
+      margin: 150px auto;
+      
+      -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+      box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.75);
+   }
+      p{
+         font-size: 0.9em;
+      }
+      
+      button{
+         width: 100%;
+         text-align: center;
+         color: grey;
+         margin-top: 20px;
+         border: 1px solid rgba(0,0,0,0.4);
+      }
+      
+      .form-group{
+         margin: 15px auto;
+      }
+         label{
+            font-weight: bold;
+            font-size: 0.9em;
+         }
+        
+         .input-group{
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            -moz-box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+            box-shadow: -1px 3px 18px 0px rgba(0,0,0,0.35);
+         }  
+            .input-group-addon{
+               border: none;
+               border-right: 1px solid rgba(0,0,0,0.2);
+            }
+            
+            input{
+               padding-left: 10px;
+               
+            } 
+         input{
+            padding: 3px;
+            width: 100%;
+            border: none;
+            border-radius: 0 5px 5px 0;
+         }
+         #capaAltas,#capaBajas,#capaMod,#capaCons,#recogerAlta,#alta{
+            display:none;
+         }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form">
+        <div id="capaMenu">
+            <h4>QUE DESEA HACER</h4>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="altas" value="REALIZAR UN ALTA" onclick="verAltas();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="bajas" value="REALIZAR UNA BAJA" onclick="verBajas();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="modificaciones" value="REALIZAR UNA MODIFICACION" onclick="verMods();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="consultas" value="REALIZAR UNA CONSULTA" onclick="verCons();">
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="salir" value="SALIR" onclick="cerrar();">
+            </div>
+        </div>
+        <div id="capaAltas">
+            <h4>USUARIO A DAR DE ALTA</h4>
+            <br>
+            <div class="form-group">
+                <label for="n1">Introduce el Nif:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nif"/>
+                 </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="comsultarAlta" value="BUSCAR NIF" onclick="buscarNif();">
+                <br>
+                <br>
+            </div>
+            <div id="recogerAlta">
+                <div class="form-group">
+                    <label for="n1">Introduce el primer apellido:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ape1"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el segundo apellido:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ape2"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el nombre:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nombre"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el departamento:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="departamento"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el telefono:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="tlf"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce el email:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="mail"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="n1">Introduce la antiguedad:</label>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="antiguedad"/>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="botonAlta" value="DAR DE ALTA" onclick="hacerAlta();">
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div  class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+        </div>
+        <div id="capaBajas">
+            <h4>USUARIO A DAR DE BAJA</h4>
+            <br>
+            <div class="form-group">
+                <label for="n1">Introduce el Nif:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nifBaja"/>
+                 </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="baja" value="DAR DE BAJA" onclick="hacerBaja();">
+                <br>
+                <br>
+                <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+        </div>
+        <div id="capaMod">
+            <h4>MODIFICAR DATOS DE UN USUARIO</h4>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+        </div>
+        <div id="capaCons">
+            <h4>QUE CONSULTA DESEA REALIZAR</h4>
+            <br>
+            <div class="form-group">
+                <label for="n1">Introduce el Nif:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nifCons"/>
+                 </div>
+            </div>
+            <div class="form-group">
+                <label for="n1">Introduce el primer apellido:</label>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="ape1Cons"/>
+                 </div>
+            </div>
+            <table id="tabla" class="table table-sm">
+
+            </table>
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-primary" id="cons" value="HACER UNA CONSULTA" onclick="hacerCons();">
+                <br>
+                <br>
+                <input type="button" class="btn btn-primary" id="volver" value="VOLVER AL MENU" onclick="verMenu();">
+            </div>
+        </div>
+    </form>
+    <script>
+        function verAltas(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaAltas').style.display="block";
+            document.getElementById('capaBajas').style.display="none";
+            document.getElementById('capaMod').style.display="none";
+            document.getElementById('capaCons').style.display="none";
+        }
+        function verBajas(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaAltas').style.display="none";
+            document.getElementById('capaBajas').style.display="block";
+            document.getElementById('capaMod').style.display="none";
+            document.getElementById('capaCons').style.display="none";
+        }
+        function verMods(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaAltas').style.display="none";
+            document.getElementById('capaBajas').style.display="none";
+            document.getElementById('capaMod').style.display="block";
+            document.getElementById('capaCons').style.display="none";
+        }
+        function verCons(){
+            document.getElementById('capaMenu').style.display="none";
+            document.getElementById('capaAltas').style.display="none";
+            document.getElementById('capaBajas').style.display="none";
+            document.getElementById('capaMod').style.display="none";
+            document.getElementById('capaCons').style.display="block";
+        }
+        function verMenu(){
+            document.getElementById('capaMenu').style.display="block";
+            document.getElementById('capaAltas').style.display="none";
+            document.getElementById('capaBajas').style.display="none";
+            document.getElementById('capaMod').style.display="none";
+            document.getElementById('capaCons').style.display="none";
+            document.querySelector("#tabla tr").remove();
+        }
+        function cerrar(){
+            window.close();
+        }
+        let personas=[{nif:"12345678A",ape1:"Vicente",ape2:"De Juan",nombre:"Raisa",departamento:"informatica",tlf:638248502,mail:"raisadejuan@gmail.com",antiguedad:2}];
+        function buscarNif(){
+            let econtrado=false;
+            nif=document.getElementById("nif").value;
+            for(i=0;i<personas.length;i++){
+                if(nif==personas[i].nif){
+                    alert("El nif introducido ya existe en nuestra base de datos");
+                    encontrado=true;
+                }else{
+                    alert("Proceda a hacer el alta");
+                    document.getElementById("recogerAlta").style.display="block";
+                }
+            }
+        }
+        function hacerAlta(){
+            let bien=comprobarDatos();
+            if(bien){
+                nif=document.getElementById("nif").value;
+                ape1=document.getElementById("ape1").value;
+                ape2=document.getElementById("ape2").value;
+                nombre=document.getElementById("nombre").value;
+                departamento=document.getElementById("departamento").value;
+                tlf=document.getElementById("tlf").value;
+                mail=document.getElementById("mail").value;
+                antiguedad=document.getElementById("antiguedad").value;
+                //CREAMOS EL OBJETO
+                let persona = new Object();
+                persona.nif=nif;
+                persona.ape1=ape1;
+                persona.ape2=ape2;
+                persona.nombre=nombre;
+                persona.departamento=departamento;
+                persona.tlf=tlf;
+                persona.mail=mail;
+                persona.antiguedad=antiguedad;
+                personas.push(persona);
+                alert("Persona dada de alta");
+            }
+        }
+        function comprobarDatos(){
+            let bien=true;
+            //Patrones de comprobacion
+            patronMail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            patronString=/^[A-z]{2,}/;
+            patronTlf=/^[0-9]{9}/;
+            nif=document.getElementById("nif").value;
+            ape1=document.getElementById("ape1").value;
+            ape2=document.getElementById("ape2").value;
+            nombre=document.getElementById("nombre").value;
+            departamento=document.getElementById("departamento").value;
+            tlf=document.getElementById("tlf").value;
+            mail=document.getElementById("mail").value;
+            antiguedad=document.getElementById("antiguedad").value;
+            //NIF
+            if(!validarNif(nif)){
+                alert("Nif no valido");
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //APE1
+            if(!patronString.test(ape1)){
+                alert("Primer apellido no valido");
+                document.getElementById("ape1").value="";
+                document.getElementById("ape1").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //APE2
+            if(!patronString.test(ape2)){
+                alert("Segundo apellido no valido");
+                document.getElementById("ape2").value="";
+                document.getElementById("ape2").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //NOMBRE
+            if(!patronString.test(nombre)){
+                alert("Segundo apellido no valido");
+                document.getElementById("nombre").value="";
+                document.getElementById("nombre").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //DEPARTAMENTO
+            if(!patronString.test(departamento)){
+                alert("Nombre del departamento no valido");
+                document.getElementById("departamento").value="";
+                document.getElementById("departamento").focus();
+                if(bien){
+                    bien=false;
+                }
+            }     
+            //TELEFONO
+            if(!patronTlf.test(tlf)){
+                alert("Numero de telefono no valido");
+                document.getElementById("tlf").value="";
+                document.getElementById("tlf").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //MAIL
+            if(!patronMail.test(mail)){
+                alert("Mail no valido");
+                document.getElementById("mail").value="";
+                document.getElementById("mail").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            //ANTIGUEDAD
+            if(isNaN(antiguedad)||antiguedad.length==0){
+                alert("Antiguedad no valida");
+                document.getElementById("antiguedad").value="";
+                document.getElementById("antiguedad").focus();
+                if(bien){
+                    bien=false;
+                }
+            }
+            return bien;
+            
+        }
+        function validarNif(nif){
+            let bien=true;
+            numeros=parseInt(nif);
+            //nifConLetra=sacarNif(nif);
+            if(bien){
+                    if(numeros>100000000 || numeros<0){// numeros.length!=8
+                         bien=false;
+                         alert("Los numeros del nif no son correctos");
+                    }     
+            }
+            if(!bien){
+                document.getElementById("nif").value="";
+                document.getElementById("nif").focus();
+            }  
+            return bien;
+        }   
+        function sacarNif(nif){
+            let numeros = parseInt(nif);
+            let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            let Posicion= numeros % 23;//calculo de la letra correcta
+            let Letra = letras[Posicion];//La coje de la lista de opciones
+            nif =numeros+Letra;
+            nofConLetra=nif;
+            return nifConLetra;
+        }
+        function hacerBaja(){
+            let encontrado=false;
+            nif=document.getElementById("nifBaja").value;
+            for(i=0;i<personas.length;i++){
+                if(nif==personas[i].nif){
+                    encontrado=true;
+                    let a=window.confirm("Esta seguro de querer borrarlo?");
+                    if(a){
+                        personas.splice(i,1);
+                        i=personas.length;
+                        alert("Borrado realizado");
+                    }else{
+                        alert("Borrado cancelado");
+                    }
+                }
+            }
+            if(!encontrado){
+                alert("No se ha encontrado a la persona buscada");
+            }
+        }
+        function hacerCons(){
+            let encontrado=false;
+            let index;
+            let nif=document.getElementById("nifCons").value;
+            let ape1=document.getElementById("ape1Cons").value;
+                for(i=0;i<personas.length;i++){
+                    if(nif.length!=0&&ape1.length!=0){
+                        if(personas[i].nif==nif&&personas[i].ape1==ape1){
+                            index=i;
+                            encontrado=true;
+                        }
+                    }else{
+                        if(nif.length==0){
+                            if(personas[i].ape1==ape1){
+                                index=i;
+                                encontrado=true;
+                            }
+                        }
+                        if(ape1.length==0){
+                            if(personas[i].nif==nif){
+                                index=i;
+                                encontrado=true;
+                            }
+                        }
+                    }   
+                }
+                if(!encontrado){
+                    alert("No se ha encontrado");
+                }else{
+                    mostrarTabla(index);
+                }
+        }
+        function mostrarTabla(i) { 
+            let tabla=document.getElementById("tabla"); // creacion de la tabla dinamica
+                let persona=personas[i];
+                let fila=document.createElement("tr"); //crea las filas
+
+
+                let celdaNif=document.createElement("td"); //crea las columnas
+                let textoNif=document.createTextNode(persona.nif);//meto un nodo de texto para la introduccion del texto
+                celdaNif.appendChild(textoNif); //mete el texto dentrp de los td, en este caso el dni
+                fila.appendChild(celdaNif); //mete en los tr el dni
+
+                let celdaApe1=document.createElement("td");
+                let textoApe1=document.createTextNode(persona.ape1);//meto un nodo de texto para la introduccion del texto
+                celdaApe1.appendChild(textoApe1); //mete el texto dentro del td
+                fila.appendChild(celdaApe1); //mete el texto dentro del td
+
+                let celdaNombre=document.createElement("td");
+                let textoNombre=document.createTextNode(persona.nombre);//meto un nodo de texto para la introduccion del texto
+                celdaNombre.appendChild(textoNombre); //mete el texto dentro del td
+                fila.appendChild(celdaNombre); //mete el texto dentro del td
+                tabla.appendChild(fila); 
+        }
+
+    </script>
+</body>
+</html>

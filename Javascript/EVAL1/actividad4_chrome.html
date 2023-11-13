@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        <script>
+            let dia=" ";//Inicializamos dia vacio
+            let hora=0;//Inicializamos la hora al 0
+            //Array con las asignaturas en orden de toda la semana
+            let clases=["Despliegue","Despligue","Despliegue","Dcliente","Dcliente","Dcliente","Dservidor","Dservidor",
+            "Dcliente","Dcliente","Dservidor","Dservidor","Dcliente","Dcliente","Dcliente","Diseño","Diseño","Diseño",
+            "Empresa","Empresa","Empresa","Dservidor","Dservidor","Dservidor","Despliegue","Despliegue","Dservidor",
+            "Dservidor","Diseño","Diseño"];
+            do{//Bucle para pedir el dia
+                dia=prompt("Introduce un dia de la semana");
+                dia=dia.toUpperCase();//Pasarlo a mayusculas
+            }while((dia!="LUNES")&&(dia!="MARTES")&&(dia!="MIERCOLES")&&(dia!="JUEVES")&&(dia!="VIERNES"));//Condicion a cumplir
+
+            do{//Bucle para pedir el dia
+                hora=prompt("Introduzca la hora");
+            }while(isNaN(hora)||(hora!=1&&hora!=2&&hora!=3&&hora!=4&&hora!=5&&hora!=6));//Condiciona a cumplir
+            hora=parseInt(hora);//Parsearlo para asegurarnos de que es un numero entero
+
+            if(dia=="LUNES"){//Si es lunes
+                let fila=(0+hora);//Empezamos desde la posicion 0 del array
+                alert(clases[fila]);
+            }
+            if(dia=="MARTES"){//Si es martes
+                let fila=(6+hora-1);//Empezamos desde la posicion 6 del array
+                alert(clases[fila]);
+            }
+            if(dia=="MIERCOLES"){//Si es miercoles
+                let fila=(12+hora-1);//Empezamos desde la posicion 12 del array
+                alert(clases[fila]);
+            }
+            if(dia=="JUEVES"){//Si es jueves
+                let fila=(18+hora-1);//Empezamos desde la posicion 18 del array
+                alert(clases[fila]);
+            }
+            if(dia=="VIERNES"){//Si es viernes
+                let fila=(24+hora-1);//Empezamos desde la posicion 24 del array
+                alert(clases[fila]);
+            }
+        </script>
+    </body>
+</html>

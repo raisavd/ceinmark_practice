@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        <script>
+            let booleano;
+            do{//Bucle para la comprobacion del dia
+                booleano=false;
+                dia=prompt("Introduce el dia");//Para recoger el dia
+                dia=dia.toUpperCase();//Ponerlo en mayusculas
+                if(dia.length!=0&&isNaN(dia)){//Si no es numerico y si no esta vacio
+                    if((dia=="LUNES")||(dia=="MARTES")||(dia=="MIERCOLES")||(dia=="JUEVES")||(dia=="VIERNES")){//Si es del lunes al viernes
+                        booleano=true;
+                    }
+                }
+            }while(!booleano);//Siempre y cuando no sea valido repetir
+            do{
+                booleano=false;
+                hora=prompt("Introduce la hora");//Recoger la hora
+                if((hora>=1&&hora<=6)&&!isNaN(hora)){//La hora de 1 a 6 y que sea numerico
+                    booleano=true;
+                }
+            }while(!booleano);//Siempre y cuando no sea asi repetir
+            if(dia=="LUNES"){//Si es lunes
+                if(hora==1){
+                    alert("Despliegue");
+                }
+                if(hora==2){
+                    alert("Despliegue");
+                }
+                if(hora==3){
+                    alert("Despliegue");
+                }
+                if(hora==4){
+                    alert("Dcliente");
+                }
+                if(hora==5){
+                    alert("Dcliente");
+                }
+                if(hora==6){
+                    alert("Diseño");
+                }
+            }
+            if(dia=="MARTES"){//Si es martes
+                if(hora==1){
+                    alert("Dservidor");
+                }
+                if(hora==2){
+                    alert("Dservidor");
+                }
+                if(hora==3){
+                    alert("Dcliente");
+                }
+                if(hora==4){
+                    alert("Dcliente");
+                }
+                if(hora==5){
+                    alert("Dservidor");
+                }
+                if(hora==6){
+                    alert("Dservidor");
+                }
+            }
+            if(dia=="MIERCOLES"){//Si es miercoles
+                if(hora==1){
+                    alert("Dcliente");
+                }
+                if(hora==2){
+                    alert("Dcliente");
+                }
+                if(hora==3){
+                    alert("Dcliente");
+                }
+                if(hora==4){
+                    alert("Diseño");
+                }
+                if(hora==5){
+                    alert("Diseño");
+                }
+                if(hora==6){
+                    alert("Diseño");
+                }
+            }
+            if(dia=="JUEVES"){//Si es jueves
+                if(hora==1){
+                    alert("Empresa");
+                }
+                if(hora==2){
+                    alert("Empresa");
+                }
+                if(hora==3){
+                    alert("Empresa");
+                }
+                if(hora==4){
+                    alert("Dservidor");
+                }
+                if(hora==5){
+                    alert("Dservidor");
+                }
+                if(hora==6){
+                    alert("Dservidor");
+                }
+            }
+            if(dia=="VIERNES"){//Si es viernes
+                if(hora==1){
+                    alert("Despliegue");
+                }
+                if(hora==2){
+                    alert("Despliegue");
+                }
+                if(hora==3){
+                    alert("Dservidor");
+                }
+                if(hora==4){
+                    alert("Dservidor");
+                }
+                if(hora==5){
+                    alert("Diseño");
+                }
+                if(hora==6){
+                    alert("Diseño");
+                }
+            }
+        </script>
+    </body>
+</html>
